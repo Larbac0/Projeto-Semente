@@ -141,14 +141,17 @@ body{
 .video-section{background:var(--green-deep);}
 
 .video-wrapper{
-  position:relative;width:100%;
-  padding-top:56.25%;
+  position:relative; /* 👈 ESSENCIAL */
+  width:100%;
+  padding-top:56.25%; /* 16:9 Aspect Ratio */
 }
 
 .video-wrapper video{
-  position:absolute;inset:0;
-  width:100%;height:100%;
-  object-fit:cover;
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit: cover;
 }
 
 .video-placeholder-block{
@@ -787,14 +790,6 @@ footer{
   .float-btn{max-width:340px;}
   .modal{max-width:480px;margin:0 auto;border-radius:28px;}
   .modal-overlay{align-items:center;}
-}
-.video-controls{
-  position:absolute;
-  bottom:12px;
-  right:12px;
-  display:flex;
-  gap:10px;
-  z-index:5;
 }
 
 .video-controls button{
