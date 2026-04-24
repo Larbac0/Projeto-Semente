@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="description" content="Projeto Semente — Fundação Leopoldina. Doe agora e transforme vidas.">
+<title>Projeto Semente — Fundação Leopoldina</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,600&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --green-deep:   #1B5E20;
+  --green-main:   #388E3C;
+  --green-mid:    #4CAF50;
+  --green-btn:    #66BB6A;
+  --green-light:  #C8E6C9;
+  --green-pale:   #F1F8E9;
+  --white:        #FFFFFF;
+  --cream:        #FAFAF6;
+  --text-dark:    #1C2B1D;
+  --text-muted:   #4E6652;
+  --shadow-btn:   0 6px 24px rgba(76,175,80,0.42);
+}
+
+html{scroll-behavior:smooth}
+
+body{
+  font-family:'Source Sans 3',sans-serif;
+  font-size:18px;
+  line-height:1.7;
+  background:var(--white);
+  color:var(--text-dark);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ── PROGRESS BAR ────────────────────────────── */
+.scroll-progress{
+  position:fixed;top:0;left:0;height:3px;
+  background:var(--green-btn);z-index:999;
+  transition:width .1s linear;width:0%;
+}
+
+/* ── HERO ─────────────────────────────────────── */
+.hero{
+  position:relative;width:100%;
+  height:100svh;min-height:600px;
+  overflow:hidden;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:flex-end;
+  padding-bottom:60px;
+}
+
+.hero-img{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;object-position:center 30%;
+}
+
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    to bottom,
+    rgba(0,0,0,.10) 0%,
+    rgba(0,0,0,.15) 40%,
+    rgba(0,0,0,.78) 100%
+  );
+}
+
+.hero-logo-bar{
+  position:absolute;top:0;left:0;right:0;
+  padding:20px 20px;
+  display:flex;align-items:center;justify-content:center;
+  z-index:3;
+}
+
+.hero-logo-img{
+  height:72px;width:auto;
+  filter:drop-shadow(0 2px 8px rgba(0,0,0,.45));
+}
+
+.hero-content{
+  position:relative;z-index:2;
+  text-align:center;padding:0 24px;
+}
+
+.hero-eyebrow{
+  display:block;
+  font-size:13px;font-weight:500;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--green-light);margin-bottom:14px;
+}
+
+.hero-title{
+  font-family:'Lora',serif;
+  font-size:clamp(42px,10vw,62px);
+  font-weight:700;color:#fff;
+  line-height:1.08;margin-bottom:18px;
+}
+
+.hero-title em{font-style:italic;color:var(--green-btn);}
+
+.hero-sub{
+  font-size:19px;font-weight:300;
+  color:rgba(255,255,255,.87);
+  line-height:1.6;max-width:340px;
+  margin:0 auto 36px;
+}
+
+.hero-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--green-btn);color:#fff;
+  font-family:'Source Sans 3',sans-serif;
+  font-size:19px;font-weight:600;
+  padding:18px 38px;border-radius:100px;
+  text-decoration:none;border:none;cursor:pointer;
+  box-shadow:var(--shadow-btn);
+  transition:transform .15s;
+  -webkit-tap-highlight-color:transparent;
+}
+.hero-cta:active{transform:scale(.97);}
+
+.hero-scroll{
+  position:absolute;bottom:18px;left:50%;
+  transform:translateX(-50%);
+  z-index:2;display:flex;flex-direction:column;
+  align-items:center;gap:6px;
+  animation:scrollBounce 2.2s infinite;
+}
+.hero-scroll span{font-size:11px;letter-spacing:.14em;color:rgba(255,255,255,.6);text-transform:uppercase;}
+
+@keyframes scrollBounce{
+  0%,100%{transform:translateX(-50%) translateY(0);}
+  50%{transform:translateX(-50%) translateY(7px);}
+}
+
+/* ── VÍDEO ──────────────────────────────────── */
+.video-section{background:var(--green-deep);}
+
+.video-wrapper{
+  position:relative;width:100%;
+  padding-top:56.25%;
+}
+
+.video-wrapper video{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+}
+
+.video-placeholder-block{
+  position:absolute;inset:0;
+  background:linear-gradient(160deg,#1B5E20,#2E7D32);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:14px;
+}
+.video-placeholder-block svg{opacity:.35;}
+.video-placeholder-block p{
+  color:rgba(255,255,255,.45);font-size:14px;
+  text-align:center;padding:0 32px;
+}
+
+.video-caption{
+  background:var(--green-deep);
+  padding:20px 24px;text-align:center;
+}
+.video-caption p{
+  font-family:'Lora',serif;
+  font-style:italic;font-size:20px;
+  color:var(--green-btn);line-height:1.5;
+}
+
+/* ── META MENSAL (NOVA) ──────────────────────── */
+.meta-section{
+  background:var(--white);
+  padding:48px 24px 40px;
+  text-align:center;
+}
+
+.meta-label{
+  font-size:13px;font-weight:500;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:var(--green-main);margin-bottom:10px;
+}
+
+.meta-title{
+  font-family:'Lora',serif;
+  font-size:clamp(28px,7vw,40px);
+  font-weight:700;color:var(--green-deep);
+  margin-bottom:6px;line-height:1.1;
+}
+
+.meta-subtitle{
+  font-size:17px;color:var(--text-muted);
+  margin-bottom:28px;line-height:1.55;
+}
+
+.meta-bar-wrap{
+  background:var(--green-light);
+  border-radius:100px;
+  height:24px;
+  overflow:hidden;
+  position:relative;
+  max-width:440px;margin:0 auto 12px;
+}
+
+.meta-bar-fill{
+  height:100%;
+  background:linear-gradient(90deg,var(--green-main),var(--green-btn));
+  border-radius:100px;
+  transition:width 1.2s cubic-bezier(.22,1,.36,1);
+  width:0%;
+}
+
+.meta-bar-pct{
+  position:absolute;right:12px;top:50%;
+  transform:translateY(-50%);
+  font-size:13px;font-weight:600;
+  color:var(--green-deep);
+}
+
+.meta-bar-text{
+  font-size:15px;color:var(--text-muted);
+  max-width:440px;margin:0 auto;
+  line-height:1.5;
+}
+
+.meta-bar-text strong{color:var(--green-deep);}
+
+/* ── IMPACTO / NÚMEROS ───────────────────────── */
+.impact-section{
+  background:var(--cream);
+  padding:64px 24px 56px;
+  text-align:center;
+}
+
+.section-label{
+  font-size:13px;font-weight:500;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--green-main);margin-bottom:12px;
+}
+
+.section-title{
+  font-family:'Lora',serif;
+  font-size:clamp(30px,8vw,46px);
+  font-weight:700;color:var(--green-deep);
+  line-height:1.1;margin-bottom:10px;
+}
+.section-title em{font-style:italic;color:var(--green-main);}
+
+.section-sub{
+  font-size:18px;color:var(--text-muted);
+  line-height:1.65;max-width:360px;
+  margin:0 auto 40px;
+}
+
+/* Foto no lugar do stat principal */
+.impact-photo{
+  width:100%;max-width:400px;
+  border-radius:22px;overflow:hidden;
+  margin:0 auto 20px;
+  aspect-ratio:4/3;
+}
+.impact-photo img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:center 20%;
+  display:block;
+}
+
+.stats-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;max-width:400px;margin:0 auto;
+}
+
+.stat-card{
+  background:var(--white);
+  border-radius:20px;padding:26px 16px;
+  border:1px solid rgba(76,175,80,.2);
+}
+
+.stat-number{
+  font-family:'Lora',serif;
+  font-size:46px;font-weight:700;
+  color:var(--green-main);line-height:1;
+  display:block;
+}
+
+.stat-label{
+  font-size:15px;font-weight:400;
+  color:var(--text-muted);margin-top:6px;
+  line-height:1.4;
+}
+
+/* ── MISSÃO ──────────────────────────────────── */
+.mission-section{
+  padding:64px 24px;background:var(--white);
+}
+
+.mission-photo{
+  width:100%;border-radius:24px;
+  overflow:hidden;margin-bottom:36px;
+  aspect-ratio:3/4;
+}
+.mission-photo img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:center top;
+  display:block;
+}
+
+.mission-quote{
+  border-left:4px solid var(--green-btn);
+  padding-left:22px;margin:24px 0 20px;
+}
+.mission-quote blockquote{
+  font-family:'Lora',serif;
+  font-style:italic;font-size:23px;
+  color:var(--green-deep);line-height:1.45;
+}
+
+.mission-text{
+  font-size:18px;color:var(--text-muted);
+  line-height:1.75;
+}
+
+/* ── COMO AJUDA ──────────────────────────────── */
+.how-section{
+  background:var(--green-pale);
+  padding:64px 24px;text-align:center;
+}
+
+.how-list{
+  margin-top:36px;display:flex;
+  flex-direction:column;gap:16px;text-align:left;
+}
+
+.how-item{
+  background:var(--white);
+  border-radius:20px;padding:22px 20px;
+  display:flex;align-items:flex-start;gap:18px;
+  border:1px solid rgba(76,175,80,.14);
+  opacity:0;transform:translateY(24px);
+  transition:opacity .5s ease,transform .5s ease;
+}
+.how-item.visible{opacity:1;transform:translateY(0);}
+
+.how-icon{
+  width:52px;height:52px;border-radius:14px;
+  background:var(--green-light);flex-shrink:0;
+  display:flex;align-items:center;
+  justify-content:center;font-size:26px;
+}
+
+.how-item-title{
+  font-size:18px;font-weight:600;
+  color:var(--green-deep);margin-bottom:5px;
+}
+
+.how-item-desc{
+  font-size:16px;color:var(--text-muted);
+  line-height:1.55;
+}
+
+/* ── FAQ ─────────────────────────────────────── */
+.faq-section{
+  background:var(--white);
+  padding:64px 24px;
+}
+
+.faq-list{
+  margin-top:36px;
+  display:flex;flex-direction:column;gap:12px;
+}
+
+.faq-item{
+  border:1px solid rgba(76,175,80,.2);
+  border-radius:18px;overflow:hidden;
+  background:var(--cream);
+}
+
+.faq-question{
+  width:100%;background:none;border:none;
+  padding:20px 22px;
+  display:flex;align-items:center;
+  justify-content:space-between;gap:12px;
+  cursor:pointer;text-align:left;
+  font-family:'Source Sans 3',sans-serif;
+  font-size:18px;font-weight:600;
+  color:var(--green-deep);
+  -webkit-tap-highlight-color:transparent;
+}
+
+.faq-icon{
+  width:28px;height:28px;border-radius:50%;
+  background:var(--green-light);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .25s,background .25s;
+}
+
+.faq-item.open .faq-icon{
+  transform:rotate(45deg);
+  background:var(--green-btn);
+}
+.faq-item.open .faq-icon svg path{stroke:#fff;}
+
+.faq-answer{
+  max-height:0;overflow:hidden;
+  transition:max-height .35s ease,padding .25s ease;
+  font-size:17px;color:var(--text-muted);
+  line-height:1.7;padding:0 22px;
+}
+.faq-item.open .faq-answer{
+  max-height:400px;padding:0 22px 20px;
+}
+
+/* ── DOAÇÃO ──────────────────────────────────── */
+.donation-section{
+  padding:64px 24px 120px;
+  background:var(--cream);text-align:center;
+}
+
+.donation-card{
+  background:var(--green-deep);
+  border-radius:28px;padding:40px 22px;
+  margin-top:32px;position:relative;overflow:hidden;
+}
+.donation-card::before{
+  content:'';position:absolute;
+  top:-50px;right:-50px;
+  width:180px;height:180px;border-radius:50%;
+  background:rgba(102,187,106,.1);
+}
+
+.donation-card-title{
+  font-family:'Lora',serif;
+  font-size:32px;font-weight:700;
+  color:#fff;line-height:1.2;margin-bottom:12px;
+}
+
+.donation-card-sub{
+  font-size:17px;color:rgba(255,255,255,.65);
+  line-height:1.6;margin-bottom:32px;
+}
+
+.donate-amounts{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:10px;margin-bottom:22px;
+}
+
+.amount-btn{
+  background:rgba(255,255,255,.09);
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:16px;padding:16px 8px;
+  color:#fff;
+  font-family:'Source Sans 3',sans-serif;
+  font-size:16px;font-weight:600;
+  cursor:pointer;transition:all .15s;
+  -webkit-tap-highlight-color:transparent;
+}
+.amount-btn.active,.amount-btn:active{
+  background:var(--green-btn);
+  border-color:var(--green-btn);
+}
+.amount-label{
+  display:block;font-size:11px;
+  font-weight:400;opacity:.65;margin-top:3px;
+}
+
+.donate-main-btn{
+  width:100%;background:var(--green-btn);
+  color:#fff;border:none;border-radius:100px;
+  padding:20px 24px;
+  font-family:'Source Sans 3',sans-serif;
+  font-size:19px;font-weight:600;
+  cursor:pointer;box-shadow:var(--shadow-btn);
+  display:flex;align-items:center;
+  justify-content:center;gap:10px;
+  transition:transform .15s;
+  -webkit-tap-highlight-color:transparent;
+}
+.donate-main-btn:active{transform:scale(.97);}
+
+.donate-security{
+  margin-top:16px;font-size:14px;
+  color:rgba(255,255,255,.4);
+  display:flex;align-items:center;
+  justify-content:center;gap:7px;
+}
+
+/* ── FLOATING BTN ──────────────────────────── */
+.float-btn{
+  position:fixed;bottom:24px;left:50%;
+  transform:translateX(-50%) translateY(0);
+  background:var(--green-btn);color:#fff;
+  border:none;border-radius:100px;
+  padding:16px 34px;
+  font-family:'Source Sans 3',sans-serif;
+  font-size:17px;font-weight:600;
+  cursor:pointer;
+  box-shadow:0 8px 30px rgba(76,175,80,.55);
+  display:flex;align-items:center;gap:10px;
+  z-index:800;
+  transition:transform .3s cubic-bezier(.34,1.56,.64,1),opacity .3s ease;
+  white-space:nowrap;
+  -webkit-tap-highlight-color:transparent;
+}
+.float-btn.hidden{
+  transform:translateX(-50%) translateY(110px);
+  opacity:0;pointer-events:none;
+}
+.float-btn:active{box-shadow:0 3px 14px rgba(76,175,80,.45);}
+
+.pulse-dot{
+  width:9px;height:9px;border-radius:50%;
+  background:#fff;position:relative;
+}
+.pulse-dot::after{
+  content:'';position:absolute;inset:-4px;
+  border-radius:50%;
+  border:2px solid rgba(255,255,255,.45);
+  animation:pulse 1.8s infinite;
+}
+@keyframes pulse{
+  0%{transform:scale(1);opacity:1;}
+  100%{transform:scale(2.4);opacity:0;}
+}
+
+/* ── MODAL ──────────────────────────────────── */
+.modal-overlay{
+  position:fixed;inset:0;
+  background:rgba(0,0,0,.72);z-index:900;
+  display:flex;align-items:flex-end;
+  opacity:0;pointer-events:none;
+  transition:opacity .3s ease;
+  backdrop-filter:blur(4px);
+  -webkit-backdrop-filter:blur(4px);
+}
+.modal-overlay.open{opacity:1;pointer-events:all;}
+
+.modal{
+  background:var(--white);width:100%;
+  border-radius:28px 28px 0 0;
+  padding-bottom:env(safe-area-inset-bottom,16px);
+  transform:translateY(100%);
+  transition:transform .38s cubic-bezier(.32,.72,0,1);
+  max-height:92svh;overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+}
+.modal-overlay.open .modal{transform:translateY(0);}
+
+.modal-handle{
+  width:38px;height:4px;
+  background:#E0E0E0;border-radius:2px;
+  margin:14px auto 0;
+}
+
+.modal-header{
+  padding:18px 24px 0;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.modal-title{
+  font-family:'Lora',serif;
+  font-size:28px;font-weight:700;
+  color:var(--green-deep);
+}
+.modal-close{
+  width:38px;height:38px;border-radius:50%;
+  background:var(--cream);border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:19px;color:var(--text-muted);
+  -webkit-tap-highlight-color:transparent;
+}
+
+.modal-body{padding:20px 24px;}
+
+.pix-amount-display{
+  background:var(--green-pale);
+  border:2px solid var(--green-btn);
+  border-radius:18px;padding:18px;
+  text-align:center;margin-bottom:20px;
+}
+.pix-amount-display .sel-amount{
+  font-family:'Lora',serif;
+  font-size:40px;font-weight:700;
+  color:var(--green-deep);display:block;
+}
+.pix-amount-display .sel-label{
+  font-size:15px;color:var(--text-muted);margin-top:3px;
+}
+
+.pix-qr-area{
+  display:flex;flex-direction:column;
+  align-items:center;gap:14px;
+  padding:24px 0;
+  border-top:1px solid rgba(0,0,0,.07);
+  border-bottom:1px solid rgba(0,0,0,.07);
+  margin-bottom:22px;
+}
+
+.qr-placeholder{
+  width:168px;height:168px;
+  background:#f5f5f5;
+  border:1px solid #E0E0E0;
+  border-radius:14px;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:9px;color:#bbb;
+  font-size:12px;text-align:center;
+}
+
+.pix-key-block{width:100%;}
+.pix-key-label{
+  font-size:13px;font-weight:500;
+  color:var(--text-muted);
+  text-transform:uppercase;letter-spacing:.1em;
+  margin-bottom:8px;
+}
+.pix-key-box{
+  display:flex;align-items:center;
+  background:var(--cream);
+  border:1px solid rgba(0,0,0,.1);
+  border-radius:14px;overflow:hidden;
+}
+.pix-key-value{
+  flex:1;padding:14px 16px;
+  font-size:15px;font-family:monospace;
+  color:var(--text-dark);word-break:break-all;
+}
+.pix-copy-btn{
+  padding:14px 18px;background:var(--green-main);
+  border:none;color:#fff;
+  font-family:'Source Sans 3',sans-serif;
+  font-size:14px;font-weight:600;cursor:pointer;
+  flex-shrink:0;transition:background .15s;
+  -webkit-tap-highlight-color:transparent;
+}
+.pix-copy-btn.copied{background:var(--green-deep);}
+
+.modal-amounts{
+  margin-bottom:14px;
+}
+.modal-amounts .amount-btn{
+  padding:12px 6px;font-size:15px;
+  background:var(--cream);
+  border:1.5px solid rgba(76,175,80,.3);
+  color:var(--green-deep);
+}
+.modal-amounts .amount-btn.active,
+.modal-amounts .amount-btn:active{
+  background:var(--green-btn);
+  border-color:var(--green-btn);
+  color:#fff;
+}
+.modal-amounts .amount-label{font-size:10px;color:inherit;}
+
+.custom-amount-group{margin-bottom:16px;display:none;}
+
+.form-section{margin-top:24px;}
+.form-title{
+  font-size:19px;font-weight:600;
+  color:var(--text-dark);margin-bottom:4px;
+}
+.form-subtitle{
+  font-size:16px;color:var(--text-muted);
+  margin-bottom:18px;line-height:1.5;
+}
+.form-group{margin-bottom:16px;}
+.form-label{
+  display:block;font-size:14px;font-weight:500;
+  color:var(--text-muted);margin-bottom:7px;
+}
+.form-input{
+  width:100%;background:var(--cream);
+  border:1px solid rgba(0,0,0,.12);
+  border-radius:14px;padding:16px 18px;
+  font-family:'Source Sans 3',sans-serif;
+  font-size:17px;color:var(--text-dark);
+  outline:none;transition:border-color .2s;
+  -webkit-appearance:none;appearance:none;
+}
+.form-input:focus{
+  border-color:var(--green-btn);
+  background:var(--white);
+}
+
+.form-note{
+  background:var(--green-pale);border-radius:14px;
+  padding:16px 18px;font-size:15px;
+  color:var(--text-muted);line-height:1.6;
+  margin-bottom:22px;
+  display:flex;gap:10px;align-items:flex-start;
+}
+
+.form-submit{
+  width:100%;background:var(--green-btn);color:#fff;
+  border:none;border-radius:100px;
+  padding:18px 24px;
+  font-family:'Source Sans 3',sans-serif;
+  font-size:18px;font-weight:600;cursor:pointer;
+  box-shadow:var(--shadow-btn);margin-bottom:28px;
+  transition:transform .15s;
+  -webkit-tap-highlight-color:transparent;
+}
+.form-submit:active{transform:scale(.97);}
+.form-submit:disabled{opacity:.6;cursor:not-allowed;}
+
+/* ── SUCESSO ─────────────────────────────────── */
+.success-state{
+  text-align:center;padding:40px 24px 36px;display:none;
+}
+.success-state.active{display:block;}
+.success-icon{
+  width:80px;height:80px;
+  background:var(--green-light);border-radius:50%;
+  margin:0 auto 22px;
+  display:flex;align-items:center;justify-content:center;
+}
+.success-title{
+  font-family:'Lora',serif;
+  font-size:30px;font-weight:700;
+  color:var(--green-deep);margin-bottom:10px;
+}
+.success-sub{
+  font-size:17px;color:var(--text-muted);
+  line-height:1.65;margin-bottom:28px;
+}
+
+/* ── FOOTER ──────────────────────────────────── */
+footer{
+  background:var(--green-deep);
+  padding:48px 24px 40px;text-align:center;
+}
+.footer-logo{
+  margin-bottom:16px;
+}
+.footer-logo-img{
+  height:70px;width:auto;
+  filter:brightness(1.1) drop-shadow(0 2px 8px rgba(0,0,0,.3));
+}
+.footer-title{
+  font-family:'Lora',serif;font-size:22px;
+  font-weight:600;color:#fff;margin-bottom:8px;
+}
+.footer-text{
+  font-size:15px;color:rgba(255,255,255,.45);
+  line-height:1.65;
+}
+.footer-cnpj{
+  margin-top:22px;
+  background:rgba(255,255,255,.07);
+  border-radius:14px;padding:16px 18px;
+}
+.footer-cnpj p{
+  font-size:13px;color:rgba(255,255,255,.5);
+  line-height:1.65;
+}
+.footer-cnpj strong{color:rgba(255,255,255,.7);}
+
+/* ── ANIMAÇÕES ───────────────────────────────── */
+.fade-in{
+  opacity:0;transform:translateY(30px);
+  transition:opacity .7s ease,transform .7s ease;
+}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+
+/* ── TOAST ───────────────────────────────────── */
+.toast{
+  position:fixed;top:24px;left:50%;
+  transform:translateX(-50%) translateY(-100px);
+  background:var(--green-deep);color:#fff;
+  padding:13px 26px;border-radius:100px;
+  font-size:16px;font-weight:500;z-index:1100;
+  transition:transform .3s cubic-bezier(.34,1.56,.64,1);
+  white-space:nowrap;
+}
+.toast.show{transform:translateX(-50%) translateY(0);}
+
+@media(max-width:360px){
+  .donate-amounts{grid-template-columns:1fr 1fr;}
+  body{font-size:16px;}
+}
+@media(min-width:768px){
+  .float-btn{max-width:340px;}
+  .modal{max-width:480px;margin:0 auto;border-radius:28px;}
+  .modal-overlay{align-items:center;}
+}
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="progressBar"></div>
+<div class="toast" id="toast"></div>
+
+<!-- ══ HERO ══════════════════════════════════════ -->
+<section class="hero">
+  <img class="hero-img" src="https://res.cloudinary.com/ddld9eop2/image/upload/v1777036037/IMG_2338_xh6ahw.jpg" alt="">
+  <div class="hero-overlay"></div>
+  <div class="hero-logo-bar">
+    <img class="hero-logo-img" src="https://res.cloudinary.com/ddld9eop2/image/upload/v1777036068/Logo_1_qldcsy.jpg" alt="">
+  </div>
+
+  <div class="hero-content">
+    <span class="hero-eyebrow">Ação Social · Fundação Leopoldina</span>
+    <h1 class="hero-title">Uma semente<br><em>muda tudo.</em></h1>
+    <p class="hero-sub">Com sua doação, plantamos esperança e transformamos vidas de quem mais precisa.</p>
+    <button class="hero-cta" onclick="openModal()">
+      Quero Doar Agora
+    </button>
+  </div>
+
+  <div class="hero-scroll">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="rgba(255,255,255,.6)"><path d="M7 10l5 5 5-5H7z"/></svg>
+    <span>Role para ver</span>
+  </div>
+</section>
+
+<!-- ══ VÍDEO ══════════════════════════════════════ -->
+<section class="video-section">
+  <div class="video-wrapper">
+      <video autoplay muted loop playsinline>
+        <source src="https://res.cloudinary.com/ddld9eop2/video/upload/v1777034451/copy_EF76C822-8D58-48ED-BFF3-1D9017B4CB38_rebtil.mp4" type="video/mp4">
+      </video>
+  </div>
+  <div class="video-caption">
+    <p>"Cada doação é uma semente que germina em uma vida transformada."</p>
+  </div>
+</section>
+
+<!-- ══ META MENSAL ════════════════════════════════ -->
+<section class="meta-section" id="meta">
+  <p class="meta-label">Meta do mês</p>
+  <h2 class="meta-title">Ajude a completar<br>nossa meta de abril</h2>
+  <p class="meta-subtitle">Cada doação enche essa barra de esperança.</p>
+
+  <div class="meta-bar-wrap">
+    <div class="meta-bar-fill" id="metaBarFill"></div>
+    <span class="meta-bar-pct" id="metaBarPct">0%</span>
+  </div>
+  <p class="meta-bar-text">
+    <strong id="metaArrecadado">R$ 0</strong> arrecadados de
+    <strong id="metaTotal">R$ 2.000</strong> neste mês
+  </p>
+</section>
+
+<!-- ══ NÚMEROS DE IMPACTO ════════════════════════ -->
+<section class="impact-section">
+  <p class="section-label fade-in">Nosso impacto</p>
+  <h2 class="section-title fade-in">Números que<br><em>emocionam.</em></h2>
+  <p class="section-sub fade-in">Cada real doado chega diretamente para quem precisa — com transparência e amor.</p>
+
+  <div class="impact-photo fade-in">
+    <img src="https://res.cloudinary.com/ddld9eop2/image/upload/v1777036059/IMG_2386_bilqfg.jpg" alt="">
+  </div>
+
+  <div class="stats-grid fade-in">
+    <div class="stat-card">
+      <span class="stat-number">89%</span>
+      <p class="stat-label">das doações vão direto para a ação</p>
+    </div>
+    <div class="stat-card">
+      <span class="stat-number">5+</span>
+      <p class="stat-label">anos de missão social</p>
+    </div>
+    <div class="stat-card">
+      <span class="stat-number">100%</span>
+      <p class="stat-label">transparência nas contas</p>
+    </div>
+    <div class="stat-card">
+      <span class="stat-number">∞</span>
+      <p class="stat-label">amor e dedicação</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MISSÃO ═════════════════════════════════════ -->
+<section class="mission-section">
+  <div class="mission-photo fade-in">
+    <img src="https://res.cloudinary.com/ddld9eop2/image/upload/v1777036057/IMG_2396_l28xmc.jpg" alt="">
+  </div>
+
+  <p class="section-label fade-in">Nossa missão</p>
+  <h2 class="section-title fade-in" style="text-align:left">O que é o<br><em>Projeto Semente?</em></h2>
+
+  <div class="mission-quote fade-in">
+    <blockquote>"Acreditamos que toda pessoa merece uma chance de florescer."</blockquote>
+  </div>
+
+  <p class="mission-text fade-in">
+    O Projeto Semente, da Fundação Leopoldina, nasceu do desejo de transformar realidades. Atuamos diretamente com pessoas com deficiência, famílias em vulnerabilidade, promovendo arte, cultura, educação e inclusão social.
+    <br><br>
+    Com sua doação, garantimos atividades, apoio e esperança para quem está recomeçando — uma semente de cada vez.
+  </p>
+</section>
+
+<!-- ══ COMO AJUDA ═════════════════════════════════ -->
+<section class="how-section">
+  <p class="section-label">Sua doação em ação</p>
+  <h2 class="section-title">Como cada real<br><em>transforma vidas</em></h2>
+
+  <div class="how-list">
+    <div class="how-item">
+      <div class="how-icon">🎵</div>
+      <div>
+        <p class="how-item-title">Arte e Cultura</p>
+        <p class="how-item-desc">Atividades musicais, artísticas e culturais que desenvolvem talentos e fortalecem a autoestima.</p>
+      </div>
+    </div>
+    <div class="how-item">
+      <div class="how-icon">♿</div>
+      <div>
+        <p class="how-item-title">Inclusão de Pessoas com Deficiência</p>
+        <p class="how-item-desc">Suporte especializado, adaptações e oportunidades para uma vida com dignidade e autonomia.</p>
+      </div>
+    </div>
+    <div class="how-item">
+      <div class="how-icon">📚</div>
+      <div>
+        <p class="how-item-title">Educação Socioemocional</p>
+        <p class="how-item-desc">Oficinas e acompanhamento que preparam para a vida em comunidade e no mercado de trabalho.</p>
+      </div>
+    </div>
+    <div class="how-item">
+      <div class="how-icon">🌱</div>
+      <div>
+        <p class="how-item-title">Meio Ambiente</p>
+        <p class="how-item-desc">Projetos de consciência ambiental que conectam as pessoas à natureza e ao futuro.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ════════════════════════════════════════ -->
+<section class="faq-section">
+  <p class="section-label fade-in">Dúvidas frequentes</p>
+  <h2 class="section-title fade-in">Perguntas<br><em>e respostas</em></h2>
+
+  <div class="faq-list" id="faqList">
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Minha doação é segura?
+        <div class="faq-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+            <path d="M12 5v14M5 12h14" stroke="#388E3C" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </button>
+      <div class="faq-answer">
+        Sim! Toda doação é feita via PIX diretamente para a conta da Fundação Leopoldina (CNPJ 18.303.296/0001-85), registrada no governo federal. Cada centavo é aplicado diretamente nas atividades do Projeto Semente.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Qual o valor mínimo para doação?
+        <div class="faq-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+            <path d="M12 5v14M5 12h14" stroke="#388E3C" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </button>
+      <div class="faq-answer">
+        Qualquer valor é bem-vindo! Não há valor mínimo. Uma doação de R$ 10, R$ 20 ou qualquer quantia que caiba no seu coração já faz uma diferença enorme na vida de quem atendemos.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Como sei que o dinheiro chegou?
+        <div class="faq-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+            <path d="M12 5v14M5 12h14" stroke="#388E3C" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </button>
+      <div class="faq-answer">
+        Ao confirmar sua doação e deixar seu contato, nossa equipe entra em contato para agradecer e confirmar o recebimento. Também publicamos relatórios mensais de arrecadação para total transparência.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Posso fazer uma doação recorrente?
+        <div class="faq-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+            <path d="M12 5v14M5 12h14" stroke="#388E3C" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </button>
+      <div class="faq-answer">
+        Com certeza! Doações mensais são a forma mais poderosa de nos ajudar. Entre em contato pelo WhatsApp após sua primeira doação e nossa equipe configura um lembrete mensal para você.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Quem é a Fundação Leopoldina?
+        <div class="faq-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+            <path d="M12 5v14M5 12h14" stroke="#388E3C" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </button>
+      <div class="faq-answer">
+        A Fundação Leopoldina SócioEducacional, Meio Ambiente, Pessoas com Deficiência e Cultura é uma organização sem fins lucrativos registrada (CNPJ 18.303.296/0001-85), atuando há mais de 5 anos em projetos sociais, culturais e de inclusão. O Projeto Semente é nossa principal ação de transformação de vidas.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ DOAÇÃO ══════════════════════════════════════ -->
+<section class="donation-section" id="doar">
+  <p class="section-label fade-in">Faça parte</p>
+  <h2 class="section-title fade-in">Doe agora e<br><em>plante esperança.</em></h2>
+
+  <div class="donation-card fade-in">
+    <h3 class="donation-card-title">Escolha o valor<br>da sua doação</h3>
+    <p class="donation-card-sub">Todo valor faz diferença. Escolha o que couber no seu coração.</p>
+
+    <div class="donate-amounts" id="amountGrid">
+      <button class="amount-btn active" data-value="20" data-label="Um abraço" onclick="selectAmount(this)">
+        R$ 20<span class="amount-label">Um abraço</span>
+      </button>
+      <button class="amount-btn" data-value="50" data-label="Uma família" onclick="selectAmount(this)">
+        R$ 50<span class="amount-label">Uma família</span>
+      </button>
+      <button class="amount-btn" data-value="100" data-label="Um futuro" onclick="selectAmount(this)">
+        R$ 100<span class="amount-label">Um futuro</span>
+      </button>
+      <button class="amount-btn" data-value="200" data-label="Uma comunidade" onclick="selectAmount(this)">
+        R$ 200<span class="amount-label">Comunidade</span>
+      </button>
+      <button class="amount-btn" data-value="500" data-label="Transformação" onclick="selectAmount(this)">
+        R$ 500<span class="amount-label">Transformação</span>
+      </button>
+      <button class="amount-btn" data-value="outro" data-label="Valor livre" onclick="selectAmount(this)">
+        Outro<span class="amount-label">Valor livre</span>
+      </button>
+    </div>
+
+    <button class="donate-main-btn" onclick="openModal()">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
+        <path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/>
+      </svg>
+      Quero Doar Agora
+    </button>
+
+    <p class="donate-security">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="rgba(255,255,255,.4)"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+      100% seguro via PIX — Fundação Leopoldina
+    </p>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══════════════════════════════════════ -->
+<footer>
+  <div class="footer-logo">
+    <img class="footer-logo-img" src="https://res.cloudinary.com/ddld9eop2/image/upload/v1777036069/Logo_2_jvhkvc.jpg" alt="">
+  </div>
+  <h3 class="footer-title">Projeto Semente</h3>
+  <p class="footer-text">Juntos, transformamos realidades.<br>Cada semente plantada hoje é uma árvore amanhã.</p>
+
+  <div class="footer-cnpj">
+    <p>
+      <strong>Fundação Leopoldina SócioEducacional,</strong><br>
+      Meio Ambiente, Pessoas com Deficiência e Cultura<br>
+      <strong>CNPJ:</strong> 18.303.296/0001-85
+    </p>
+  </div>
+
+  <p class="footer-text" style="margin-top:20px">&copy; 2025 Projeto Semente · Todos os direitos reservados</p>
+</footer>
+
+<!-- ══ BOTÃO FLUTUANTE ════════════════════════════ -->
+<button class="float-btn hidden" id="floatBtn" onclick="openModal()">
+  <div class="pulse-dot"></div>
+  Quero Doar
+</button>
+
+<!-- ══ MODAL PIX ══════════════════════════════════ -->
+<div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
+  <div class="modal" id="modal">
+    <div class="modal-handle"></div>
+
+    <div class="modal-header">
+      <h3 class="modal-title" id="modalTitle">Fazer doação</h3>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+
+    <div class="modal-body" id="modalContent">
+
+      <!-- Seleção de valor dentro do modal -->
+      <p style="font-size:15px;font-weight:600;color:var(--green-deep);margin-bottom:12px;">Escolha o valor da doação</p>
+      <div class="donate-amounts modal-amounts" id="modalAmountGrid">
+        <button class="amount-btn active" data-value="20" data-label="Um abraço" onclick="selectModalAmount(this)">
+          R$ 20<span class="amount-label">Um abraço</span>
+        </button>
+        <button class="amount-btn" data-value="50" data-label="Uma família" onclick="selectModalAmount(this)">
+          R$ 50<span class="amount-label">Uma família</span>
+        </button>
+        <button class="amount-btn" data-value="100" data-label="Um futuro" onclick="selectModalAmount(this)">
+          R$ 100<span class="amount-label">Um futuro</span>
+        </button>
+        <button class="amount-btn" data-value="200" data-label="Comunidade" onclick="selectModalAmount(this)">
+          R$ 200<span class="amount-label">Comunidade</span>
+        </button>
+        <button class="amount-btn" data-value="500" data-label="Transformação" onclick="selectModalAmount(this)">
+          R$ 500<span class="amount-label">Transformação</span>
+        </button>
+      </div>
+
+      <!-- Campo manual sempre visível -->
+      <div style="margin-bottom:18px;">
+        <label class="form-label" for="manualAmountInput">Ou digite outro valor (R$)</label>
+        <input type="number" class="form-input" id="manualAmountInput"
+               placeholder="Mínimo R$ 1,00" min="1" step="1"
+               oninput="updateManualAmount(this.value)"
+               onblur="validateMinAmount(this)">
+        <p id="manualAmountError" style="display:none;color:#c62828;font-size:13px;margin-top:5px;padding-left:4px;">⚠ O valor mínimo para doação é R$ 1,00</p>
+      </div>
+
+      <!-- Display do valor selecionado -->
+      <div class="pix-amount-display">
+        <span class="sel-amount" id="selAmountDisplay">R$ 20</span>
+        <p class="sel-label" id="selLabelDisplay">Um abraço — obrigado! 💚</p>
+      </div>
+
+      <!-- QR Code + Chave PIX -->
+      <div class="pix-qr-area">
+        <!--
+          INSTRUÇÃO: Substitua o div abaixo por:
+          <img src="data:image/png;base64,SEU_QR_BASE64" alt="QR Code PIX"
+               style="width:168px;height:168px;border-radius:14px;">
+        -->
+        <div class="qr-placeholder">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="#bbb">
+            <path d="M3 11h8V3H3v8zm2-6h4v4H5V5zM3 21h8v-8H3v8zm2-6h4v4H5v-4zM13 3v8h8V3h-8zm6 6h-4V5h4v4zM13 13h2v2h-2zM15 15h2v2h-2zM13 17h2v2h-2zM17 13h2v2h-2zM19 15h2v2h-2zM17 17h2v2h-2zM19 19h2v2h-2zM21 17h-2v2h2z"/>
+          </svg>
+          <span>QR Code PIX<br>insira aqui</span>
+        </div>
+
+        <div class="pix-key-block">
+          <p class="pix-key-label">Chave PIX (CNPJ)</p>
+          <div class="pix-key-box">
+            <!-- ⬇ SUBSTITUA PELA CHAVE PIX REAL ⬇ -->
+            <span class="pix-key-value" id="pixKey">18.303.296/0001-85</span>
+            <button class="pix-copy-btn" id="copyBtn" onclick="copyPix()">Copiar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Formulário -->
+      <div class="form-section">
+        <p class="form-title">Deixe seu contato (opcional)</p>
+        <p class="form-subtitle">Após fazer o PIX, preencha abaixo — vamos te agradecer! 💚</p>
+
+        <div class="form-group">
+          <label class="form-label" for="donorName">Seu nome</label>
+          <input type="text" class="form-input" id="donorName" placeholder="Como podemos te chamar?">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="donorContact">WhatsApp ou e-mail</label>
+          <input type="text" class="form-input" id="donorContact" placeholder="(21) 9 0000-0000 ou email@email.com">
+        </div>
+
+        <div class="form-note">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#388E3C" style="flex-shrink:0;margin-top:2px">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+          </svg>
+          <span>Usaremos seu contato <strong>apenas para agradecer</strong> pela sua doação generosa. Nunca enviaremos spam. 💚</span>
+        </div>
+
+        <button class="form-submit" id="submitBtn" onclick="submitForm()">
+          Já fiz o PIX — Confirmar doação
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Estado de sucesso -->
+    <div class="success-state" id="successState">
+      <div class="success-icon">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="#388E3C">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+        </svg>
+      </div>
+      <h3 class="success-title">Obrigado,<br>semeador! 🌱</h3>
+      <p class="success-sub">Sua doação chegou ao coração de quem mais precisa. Em breve entraremos em contato para agradecer pessoalmente. Que Deus abençoe você!</p>
+      <button class="form-submit" onclick="closeModal()">Fechar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ════════════════════════════════════════════════
+// CONFIGURAÇÕES — editar conforme necessário
+// ════════════════════════════════════════════════
+
+// Google Apps Script Web App URL (POST = salva doação, GET = lê total arrecadado)
+const SHEETS_WEBHOOK = '  https://script.google.com/macros/s/AKfycbyUP-GLQunjZZaqSQ3jqXJNCOc_Ok2ro9P0ptqHdRg900jUYbJiUawE1nnG54_RpKL7iA/exec'; // Ex: 'https://script.google.com/macros/s/SEU_ID/exec'
+
+// Meta mensal (em reais)
+const META_TOTAL = 2000;
+
+// ════════════════════════════════════════════════
+// ESTADO
+// ════════════════════════════════════════════════
+let selectedValue = 20;
+let selectedLabel = 'Um abraço';
+
+// ════════════════════════════════════════════════
+// META MENSAL — busca total real do Sheets via GET
+// ════════════════════════════════════════════════
+async function fetchMetaFromSheets() {
+  if (!SHEETS_WEBHOOK) { initMeta(0, META_TOTAL); return; }
+  try {
+    const res = await fetch(SHEETS_WEBHOOK + '?action=getMeta', { mode: 'cors' });
+    const data = await res.json();
+    initMeta(data.total || 0, META_TOTAL);
+  } catch (e) {
+    console.warn('Não foi possível buscar meta do Sheets:', e);
+    initMeta(0, META_TOTAL);
+  }
+}
+
+function initMeta(arrecadado, total) {
+  const pct = Math.min(100, Math.round((arrecadado / total) * 100));
+  document.getElementById('metaArrecadado').textContent = 'R$ ' + arrecadado.toLocaleString('pt-BR');
+  document.getElementById('metaTotal').textContent = 'R$ ' + total.toLocaleString('pt-BR');
+  document.getElementById('metaBarPct').textContent = pct + '%';
+  const bar = document.getElementById('metaBarFill');
+  const obs = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      setTimeout(() => { bar.style.width = pct + '%'; }, 200);
+      obs.disconnect();
+    }
+  }, { threshold: .3 });
+  obs.observe(bar);
+}
+
+function incrementMeta(valor) {
+  const barFill = document.getElementById('metaBarFill');
+  const current = parseFloat(barFill.style.width) || 0;
+  const add = Math.min(100 - current, (valor / META_TOTAL) * 100);
+  barFill.style.width = (current + add) + '%';
+  document.getElementById('metaBarPct').textContent = Math.round(current + add) + '%';
+  // Atualiza valor exibido
+  const atualEl = document.getElementById('metaArrecadado');
+  const atualNum = parseInt(atualEl.textContent.replace(/\D/g,'')) || 0;
+  atualEl.textContent = 'R$ ' + (atualNum + valor).toLocaleString('pt-BR');
+}
+
+// ════════════════════════════════════════════════
+// SELEÇÃO DE VALOR — grade da página principal
+// ════════════════════════════════════════════════
+function selectAmount(btn) {
+  document.querySelectorAll('#amountGrid .amount-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const val = btn.dataset.value;
+  selectedLabel = btn.dataset.label;
+  if (val !== 'outro') {
+    selectedValue = parseInt(val);
+    syncModalDisplay(val, selectedLabel);
+  }
+}
+
+// ════════════════════════════════════════════════
+// SELEÇÃO DE VALOR — grade dentro do modal
+// ════════════════════════════════════════════════
+function selectModalAmount(btn) {
+  document.querySelectorAll('#modalAmountGrid .amount-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  selectedValue = parseInt(btn.dataset.value);
+  selectedLabel = btn.dataset.label;
+  // Limpa campo manual
+  document.getElementById('manualAmountInput').value = '';
+  syncModalDisplay(btn.dataset.value, selectedLabel);
+}
+
+// Campo manual sempre visível — substitui a seleção dos botões
+function updateManualAmount(v) {
+  const errEl = document.getElementById('manualAmountError');
+  const val = parseInt(v);
+  if (v && val < 1) {
+    errEl.style.display = 'block';
+    return;
+  }
+  errEl.style.display = 'none';
+  if (v && val >= 1) {
+    selectedValue = val;
+    selectedLabel = 'Valor livre';
+    document.querySelectorAll('#modalAmountGrid .amount-btn').forEach(b => b.classList.remove('active'));
+    syncModalDisplay(v, 'Valor personalizado');
+  } else if (!v) {
+    const active = document.querySelector('#modalAmountGrid .amount-btn.active');
+    if (active) {
+      selectedValue = parseInt(active.dataset.value);
+      selectedLabel = active.dataset.label;
+      syncModalDisplay(active.dataset.value, selectedLabel);
+    }
+  }
+}
+
+function validateMinAmount(input) {
+  const errEl = document.getElementById('manualAmountError');
+  if (input.value && parseInt(input.value) < 1) {
+    input.value = '';
+    errEl.style.display = 'none';
+    const active = document.querySelector('#modalAmountGrid .amount-btn.active');
+    if (active) syncModalDisplay(active.dataset.value, active.dataset.label);
+  }
+}
+
+function syncModalDisplay(val, label) {
+  document.getElementById('selAmountDisplay').textContent = 'R$ ' + val;
+  document.getElementById('selLabelDisplay').textContent = label + ' — obrigado! 💚';
+}
+
+function updateCustomAmount(v) {
+  updateManualAmount(v);
+}
+
+// ════════════════════════════════════════════════
+// MODAL
+// ════════════════════════════════════════════════
+function openModal() {
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  // Sincroniza grade do modal com seleção da página
+  const pagActive = document.querySelector('#amountGrid .amount-btn.active');
+  if (pagActive && pagActive.dataset.value !== 'outro') {
+    document.querySelectorAll('#modalAmountGrid .amount-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.value === pagActive.dataset.value);
+    });
+    syncModalDisplay(pagActive.dataset.value, pagActive.dataset.label);
+  }
+  document.getElementById('manualAmountInput').value = '';
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+  setTimeout(() => {
+    document.getElementById('modalContent').style.display = 'block';
+    document.getElementById('successState').classList.remove('active');
+    document.getElementById('modalTitle').textContent = 'Fazer doação';
+    document.getElementById('submitBtn').disabled = false;
+    document.getElementById('submitBtn').textContent = 'Já fiz o PIX — Confirmar doação';
+  }, 420);
+}
+
+function handleOverlayClick(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+}
+
+// ════════════════════════════════════════════════
+// PIX — COPIAR CHAVE
+// ════════════════════════════════════════════════
+function copyPix() {
+  const key = document.getElementById('pixKey').textContent.trim();
+  const btn = document.getElementById('copyBtn');
+
+  const doToast = () => {
+    btn.textContent = '✓ Copiada!';
+    btn.classList.add('copied');
+    showToast('✓ Chave PIX copiada!');
+    setTimeout(() => { btn.textContent = 'Copiar'; btn.classList.remove('copied'); }, 3000);
+  };
+
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(key).then(doToast).catch(() => fallbackCopy(key, doToast));
+  } else {
+    fallbackCopy(key, doToast);
+  }
+}
+
+function fallbackCopy(text, cb) {
+  const el = document.createElement('textarea');
+  el.value = text;
+  el.style.position = 'fixed';
+  el.style.opacity = '0';
+  document.body.appendChild(el);
+  el.select();
+  document.execCommand('copy');
+  document.body.removeChild(el);
+  cb();
+}
+
+// ════════════════════════════════════════════════
+// TOAST
+// ════════════════════════════════════════════════
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ════════════════════════════════════════════════
+// ENVIO PARA GOOGLE SHEETS
+// ════════════════════════════════════════════════
+async function submitForm() {
+  const name = document.getElementById('donorName').value.trim();
+  const contact = document.getElementById('donorContact').value.trim();
+  const btn = document.getElementById('submitBtn');
+
+  btn.disabled = true;
+  btn.textContent = 'Enviando...';
+
+  const payload = {
+    timestamp: new Date().toLocaleString('pt-BR'),
+    nome: name || '(não informado)',
+    contato: contact || '(não informado)',
+    valor: selectedValue ? 'R$ ' + selectedValue : 'Valor livre',
+    valorNumerico: selectedValue || 0,
+    categoria: selectedLabel
+  };
+
+  // Envio para Google Sheets via Apps Script
+  if (SHEETS_WEBHOOK) {
+    try {
+      await fetch(SHEETS_WEBHOOK, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+    } catch (e) {
+      console.warn('Webhook error:', e);
+    }
+  } else {
+    console.log('Doação registrada (configure SHEETS_WEBHOOK):', payload);
+  }
+
+  // Incrementa meta visual
+  if (selectedValue) incrementMeta(selectedValue);
+
+  // Exibe sucesso
+  document.getElementById('modalContent').style.display = 'none';
+  document.getElementById('successState').classList.add('active');
+  document.getElementById('modalTitle').textContent = 'Doação confirmada! 🌱';
+}
+
+// ════════════════════════════════════════════════
+// FAQ ACCORDION
+// ════════════════════════════════════════════════
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// ════════════════════════════════════════════════
+// SCROLL — PROGRESS + FLOATING BTN
+// ════════════════════════════════════════════════
+const floatBtn = document.getElementById('floatBtn');
+const progressBar = document.getElementById('progressBar');
+const heroEl = document.querySelector('.hero');
+
+function onScroll() {
+  const sy = window.scrollY;
+  const docH = document.documentElement.scrollHeight - window.innerHeight;
+  progressBar.style.width = Math.min(100, (sy / docH) * 100) + '%';
+  if (sy > heroEl.offsetHeight * 0.55) {
+    floatBtn.classList.remove('hidden');
+  } else {
+    floatBtn.classList.add('hidden');
+  }
+}
+window.addEventListener('scroll', onScroll, { passive: true });
+
+// ════════════════════════════════════════════════
+// INTERSECTION OBSERVER — ANIMAÇÕES
+// ════════════════════════════════════════════════
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 90);
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: .12 });
+
+document.querySelectorAll('.fade-in, .how-item').forEach(el => io.observe(el));
+
+// ════════════════════════════════════════════════
+// SWIPE PARA FECHAR MODAL
+// ════════════════════════════════════════════════
+let touchY0 = 0;
+const modalEl = document.getElementById('modal');
+modalEl.addEventListener('touchstart', e => { touchY0 = e.touches[0].clientY; }, { passive: true });
+modalEl.addEventListener('touchend', e => {
+  if (e.changedTouches[0].clientY - touchY0 > 90 && modalEl.scrollTop === 0) closeModal();
+}, { passive: true });
+
+// Previne zoom em inputs no iOS
+document.querySelectorAll('input').forEach(inp => {
+  inp.addEventListener('focus', () => { inp.style.fontSize = '16px'; });
+  inp.addEventListener('blur', () => { inp.style.fontSize = ''; });
+});
+
+// ════════════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════════════
+fetchMetaFromSheets();
+
+// ════════════════════════════════════════════════
+// INSTRUÇÕES GOOGLE SHEETS (cole em Apps Script)
+// ════════════════════════════════════════════════
+/*
+  Google Apps Script — Web App (POST salva doação + GET lê total):
+  1. Acesse script.google.com e crie um novo projeto
+  2. Cole o código abaixo:
+
+  function doPost(e) {
+    const ss = SpreadsheetApp.openById('SEU_SPREADSHEET_ID');
+    const sheet = ss.getSheetByName('Doações') || ss.insertSheet('Doações');
+    if (sheet.getLastRow() === 0) {
+      sheet.appendRow(['Data/Hora','Nome','Contato','Valor','Valor Numérico','Categoria']);
+    }
+    const data = JSON.parse(e.postData.contents);
+    sheet.appendRow([data.timestamp, data.nome, data.contato, data.valor, data.valorNumerico || 0, data.categoria]);
+    return ContentService.createTextOutput(JSON.stringify({ok:true}))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+
+  function doGet(e) {
+    if (e.parameter.action === 'getTotal') {
+      const ss = SpreadsheetApp.openById('SEU_SPREADSHEET_ID');
+      const sheet = ss.getSheetByName('Doações');
+      let total = 0;
+      if (sheet && sheet.getLastRow() > 1) {
+        const vals = sheet.getRange(2, 5, sheet.getLastRow() - 1, 1).getValues();
+        const mesAtual = new Date().getMonth();
+        const anoAtual = new Date().getFullYear();
+        // Filtra somente o mês atual (coluna A = timestamp)
+        const datas = sheet.getRange(2, 1, sheet.getLastRow() - 1, 1).getValues();
+        vals.forEach((row, i) => {
+          const d = new Date(datas[i][0]);
+          if (d.getMonth() === mesAtual && d.getFullYear() === anoAtual) {
+            total += Number(row[0]) || 0;
+          }
+        });
+      }
+      return ContentService.createTextOutput(JSON.stringify({total}))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+  }
+
+  3. Implantar > Novo deploy > App da Web > Acesso: "Qualquer pessoa"
+  4. Cole a URL gerada em SHEETS_WEBHOOK no topo do script
+  5. No envio (submitForm), inclua valorNumerico: selectedValue no payload
+*/
+</script>
+</body>
+</html>
