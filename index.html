@@ -7,6 +7,7 @@
 <title>Projeto Semente — Fundação Leopoldina</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,600&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
@@ -787,6 +788,32 @@ footer{
   .modal{max-width:480px;margin:0 auto;border-radius:28px;}
   .modal-overlay{align-items:center;}
 }
+.video-controls{
+  position:absolute;
+  bottom:12px;
+  right:12px;
+  display:flex;
+  gap:10px;
+  z-index:5;
+}
+
+.video-controls button{
+  background:rgba(0,0,0,.6);
+  border:none;
+  color:#fff;
+  font-size:16px;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  cursor:pointer;
+  backdrop-filter:blur(6px);
+  transition:transform .15s;
+}
+
+.video-controls button:active{
+  transform:scale(.9);
+}
+
 </style>
 </head>
 <body>
@@ -820,13 +847,19 @@ footer{
 <!-- ══ VÍDEO ══════════════════════════════════════ -->
 <section class="video-section">
   <div class="video-wrapper">
-      <video autoplay muted loop playsinline>
-        <source src="https://res.cloudinary.com/ddld9eop2/video/upload/v1777034451/copy_EF76C822-8D58-48ED-BFF3-1D9017B4CB38_rebtil.mp4" type="video/mp4">
+      <video id="mainVideo" autoplay muted loop playsinline>
+        <source src="https://res.cloudinary.com/ddld9eop2/video/upload/v1777031618/copy_F52CC690-16CF-4F3B-B69F-9CC68D285F65_s6l0du.mp4" type="video/mp4">
       </video>
   </div>
   <div class="video-caption">
     <p>"Cada doação é uma semente que germina em uma vida transformada."</p>
   </div>
+    <!-- CONTROLES CUSTOM -->
+  <div class="video-controls">
+    <button onclick="toggleSound()" id="soundBtn">🔇</button>
+    <button onclick="restartVideo()">⟲</button>
+  </div>
+</div>
 </section>
 
 <!-- ══ META MENSAL ════════════════════════════════ -->
@@ -1136,12 +1169,7 @@ footer{
           <img src="data:image/png;base64,SEU_QR_BASE64" alt="QR Code PIX"
                style="width:168px;height:168px;border-radius:14px;">
         -->
-        <div class="qr-placeholder">
-          <svg width="44" height="44" viewBox="0 0 24 24" fill="#bbb">
-            <path d="M3 11h8V3H3v8zm2-6h4v4H5V5zM3 21h8v-8H3v8zm2-6h4v4H5v-4zM13 3v8h8V3h-8zm6 6h-4V5h4v4zM13 13h2v2h-2zM15 15h2v2h-2zM13 17h2v2h-2zM17 13h2v2h-2zM19 15h2v2h-2zM17 17h2v2h-2zM19 19h2v2h-2zM21 17h-2v2h2z"/>
-          </svg>
-          <span>QR Code PIX<br>insira aqui</span>
-        </div>
+        <img id="qrCodePix" style="width:168px;height:168px;border-radius:14px;" />
 
         <div class="pix-key-block">
           <p class="pix-key-label">Chave PIX (CNPJ)</p>
@@ -1204,55 +1232,81 @@ footer{
 // Google Apps Script Web App URL (POST = salva doação, GET = lê total arrecadado)
 const SHEETS_WEBHOOK = '  https://script.google.com/macros/s/AKfycbyUP-GLQunjZZaqSQ3jqXJNCOc_Ok2ro9P0ptqHdRg900jUYbJiUawE1nnG54_RpKL7iA/exec'; // Ex: 'https://script.google.com/macros/s/SEU_ID/exec'
 
-// Meta mensal (em reais)
-const META_TOTAL = 2000;
 
 // ════════════════════════════════════════════════
 // ESTADO
 // ════════════════════════════════════════════════
 let selectedValue = 20;
 let selectedLabel = 'Um abraço';
+let META_ATUAL = 2000;
 
 // ════════════════════════════════════════════════
 // META MENSAL — busca total real do Sheets via GET
 // ════════════════════════════════════════════════
 async function fetchMetaFromSheets() {
-  if (!SHEETS_WEBHOOK) { initMeta(0, META_TOTAL); return; }
+  if (!SHEETS_WEBHOOK) {
+    initMeta(0, 2000);
+    return;
+  }
+
   try {
-    const res = await fetch(SHEETS_WEBHOOK + '?action=getMeta', { mode: 'cors' });
+    const res = await fetch(SHEETS_WEBHOOK + '?action=getMeta');
     const data = await res.json();
-    initMeta(data.total || 0, META_TOTAL);
+
+    // 👇 AGORA USA O VALOR DA PLANILHA
+    const total = data.total || 0;
+    const meta = data.meta || 2000;
+
+    initMeta(total, meta);
+
   } catch (e) {
-    console.warn('Não foi possível buscar meta do Sheets:', e);
-    initMeta(0, META_TOTAL);
+    console.warn('Erro ao buscar meta:', e);
+    initMeta(0, 2000);
   }
 }
 
 function initMeta(arrecadado, total) {
+  META_ATUAL = total; // 👈 salva dinamicamente
+
   const pct = Math.min(100, Math.round((arrecadado / total) * 100));
-  document.getElementById('metaArrecadado').textContent = 'R$ ' + arrecadado.toLocaleString('pt-BR');
-  document.getElementById('metaTotal').textContent = 'R$ ' + total.toLocaleString('pt-BR');
+
+  document.getElementById('metaArrecadado').textContent =
+    'R$ ' + arrecadado.toLocaleString('pt-BR');
+
+  document.getElementById('metaTotal').textContent =
+    'R$ ' + total.toLocaleString('pt-BR');
+
   document.getElementById('metaBarPct').textContent = pct + '%';
+
   const bar = document.getElementById('metaBarFill');
+
   const obs = new IntersectionObserver((entries) => {
     if (entries[0].isIntersecting) {
-      setTimeout(() => { bar.style.width = pct + '%'; }, 200);
+      setTimeout(() => {
+        bar.style.width = pct + '%';
+      }, 200);
       obs.disconnect();
     }
   }, { threshold: .3 });
+
   obs.observe(bar);
 }
 
 function incrementMeta(valor) {
   const barFill = document.getElementById('metaBarFill');
+
   const current = parseFloat(barFill.style.width) || 0;
-  const add = Math.min(100 - current, (valor / META_TOTAL) * 100);
+  const add = Math.min(100 - current, (valor / META_ATUAL) * 100);
+
   barFill.style.width = (current + add) + '%';
-  document.getElementById('metaBarPct').textContent = Math.round(current + add) + '%';
-  // Atualiza valor exibido
+  document.getElementById('metaBarPct').textContent =
+    Math.round(current + add) + '%';
+
   const atualEl = document.getElementById('metaArrecadado');
   const atualNum = parseInt(atualEl.textContent.replace(/\D/g,'')) || 0;
-  atualEl.textContent = 'R$ ' + (atualNum + valor).toLocaleString('pt-BR');
+
+  atualEl.textContent =
+    'R$ ' + (atualNum + valor).toLocaleString('pt-BR');
 }
 
 // ════════════════════════════════════════════════
@@ -1505,58 +1559,109 @@ document.querySelectorAll('input').forEach(inp => {
   inp.addEventListener('blur', () => { inp.style.fontSize = ''; });
 });
 
+function gerarPayloadPix(valor) {
+  const chave = "18303296000185"; // CNPJ sem máscara
+  const nome = "FUNDACAO LEOPOLDINA";
+  const cidade = "RIO";
+
+  function format(id, value) {
+    return id + value.length.toString().padStart(2, '0') + value;
+  }
+
+  let payload = "";
+
+  payload += "000201";
+  payload += format("26",
+    format("00", "BR.GOV.BCB.PIX") +
+    format("01", chave)
+  );
+  payload += "52040000";
+  payload += "5303986";
+
+  if (valor) {
+    payload += format("54", valor.toFixed(2));
+  }
+
+  payload += "5802BR";
+  payload += format("59", nome);
+  payload += format("60", cidade);
+  payload += format("62", format("05", "SEMENTE"));
+
+  payload += "6304";
+
+  payload += crc16(payload);
+
+  return payload;
+}
+
+function crc16(payload) {
+  let polinomio = 0x1021;
+  let resultado = 0xFFFF;
+
+  for (let i = 0; i < payload.length; i++) {
+    resultado ^= payload.charCodeAt(i) << 8;
+
+    for (let j = 0; j < 8; j++) {
+      if ((resultado <<= 1) & 0x10000) {
+        resultado ^= polinomio;
+      }
+      resultado &= 0xFFFF;
+    }
+  }
+
+  return resultado.toString(16).toUpperCase().padStart(4, '0');
+}
+
+function atualizarQRCode() {
+  const payload = gerarPayloadPix(selectedValue);
+
+  QRCode.toDataURL(payload, function (err, url) {
+    if (!err) {
+      document.getElementById("qrCodePix").src = url;
+    }
+  });
+}
+
+function syncModalDisplay(val, label) {
+  document.getElementById('selAmountDisplay').textContent = 'R$ ' + val;
+  document.getElementById('selLabelDisplay').textContent = label + ' — obrigado! 💚';
+
+  atualizarQRCode(); // 👈 AQUI
+}
+
+function openModal() {
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  atualizarQRCode(); // 👈 GERA AO ABRIR
+}
+function toggleSound() {
+  const video = document.getElementById('mainVideo');
+  const btn = document.getElementById('soundBtn');
+
+  video.muted = !video.muted;
+
+  if (video.muted) {
+    btn.textContent = '🔇';
+  } else {
+    btn.textContent = '🔊';
+
+    // 🔥 importante: garante play após interação
+    video.play();
+  }
+}
+
+function restartVideo() {
+  const video = document.getElementById('mainVideo');
+
+  video.currentTime = 0;
+  video.play();
+}
 // ════════════════════════════════════════════════
 // INIT
 // ════════════════════════════════════════════════
 fetchMetaFromSheets();
 
-// ════════════════════════════════════════════════
-// INSTRUÇÕES GOOGLE SHEETS (cole em Apps Script)
-// ════════════════════════════════════════════════
-/*
-  Google Apps Script — Web App (POST salva doação + GET lê total):
-  1. Acesse script.google.com e crie um novo projeto
-  2. Cole o código abaixo:
-
-  function doPost(e) {
-    const ss = SpreadsheetApp.openById('SEU_SPREADSHEET_ID');
-    const sheet = ss.getSheetByName('Doações') || ss.insertSheet('Doações');
-    if (sheet.getLastRow() === 0) {
-      sheet.appendRow(['Data/Hora','Nome','Contato','Valor','Valor Numérico','Categoria']);
-    }
-    const data = JSON.parse(e.postData.contents);
-    sheet.appendRow([data.timestamp, data.nome, data.contato, data.valor, data.valorNumerico || 0, data.categoria]);
-    return ContentService.createTextOutput(JSON.stringify({ok:true}))
-      .setMimeType(ContentService.MimeType.JSON);
-  }
-
-  function doGet(e) {
-    if (e.parameter.action === 'getTotal') {
-      const ss = SpreadsheetApp.openById('SEU_SPREADSHEET_ID');
-      const sheet = ss.getSheetByName('Doações');
-      let total = 0;
-      if (sheet && sheet.getLastRow() > 1) {
-        const vals = sheet.getRange(2, 5, sheet.getLastRow() - 1, 1).getValues();
-        const mesAtual = new Date().getMonth();
-        const anoAtual = new Date().getFullYear();
-        // Filtra somente o mês atual (coluna A = timestamp)
-        const datas = sheet.getRange(2, 1, sheet.getLastRow() - 1, 1).getValues();
-        vals.forEach((row, i) => {
-          const d = new Date(datas[i][0]);
-          if (d.getMonth() === mesAtual && d.getFullYear() === anoAtual) {
-            total += Number(row[0]) || 0;
-          }
-        });
-      }
-      return ContentService.createTextOutput(JSON.stringify({total}))
-        .setMimeType(ContentService.MimeType.JSON);
-    }
-  }
-
-  3. Implantar > Novo deploy > App da Web > Acesso: "Qualquer pessoa"
-  4. Cole a URL gerada em SHEETS_WEBHOOK no topo do script
-  5. No envio (submitForm), inclua valorNumerico: selectedValue no payload
-*/
 </script>
 </body>
 </html>
