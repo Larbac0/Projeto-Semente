@@ -792,23 +792,69 @@ footer{
   .modal-overlay{align-items:center;}
 }
 
-.video-controls button{
-  background:rgba(0,0,0,.6);
-  border:none;
-  color:#fff;
-  font-size:16px;
-  width:40px;
-  height:40px;
-  border-radius:50%;
-  cursor:pointer;
-  backdrop-filter:blur(6px);
-  transition:transform .15s;
+.video-controls {
+  top: 20px;
+  right: 20px;
+  z-index: 3;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px 14px;
+  border-radius: 10px;
 }
 
-.video-controls button:active{
-  transform:scale(.9);
+/* Botões */
+.video-controls button {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
 }
 
+/* Texto indicador */
+.sound-hint {
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.pix-info {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.cnpj-nome {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: #1b5e20;
+}
+
+.pix-chave {
+  font-size: 16px;
+}
+
+.mapa {
+  padding: 40px 20px;
+  text-align: center;
+  background: #f5f5f5;
+}
+
+.mapa h2 {
+  margin-bottom: 20px;
+}
+
+.mapa iframe {
+  width: 100%;
+  height: 350px;
+  border: 0;
+  border-radius: 12px;
+}
 </style>
 </head>
 <body>
@@ -852,9 +898,13 @@ footer{
     <!-- CONTROLES CUSTOM -->
   <div class="video-controls">
     <button onclick="toggleSound()" id="soundBtn">🔇</button>
-    <button onclick="restartVideo()">⟲</button>
+
+    <span class="sound-hint">
+      Toque para ouvir a mensagem
+    </span>
+
+    <button onclick="restartVideo()" id="btnReplay">🔄 Reiniciar</button>
   </div>
-</div>
 </section>
 
 <!-- ══ META MENSAL ════════════════════════════════ -->
@@ -1083,6 +1133,17 @@ footer{
     </p>
   </div>
 </section>
+<!-- ══ MAPA ══════════════════════════════════════ -->
+
+<section class="mapa">
+  <h2>Onde estamos</h2>
+
+  <iframe
+    src="https://www.google.com/maps?q=Rua+Fernando+Lobo,+879,+Guadalupe,+Rio+de+Janeiro&output=embed"
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</section>
 
 <!-- ══ FOOTER ══════════════════════════════════════ -->
 <footer>
@@ -1164,6 +1225,13 @@ footer{
           <img src="data:image/png;base64,SEU_QR_BASE64" alt="QR Code PIX"
                style="width:168px;height:168px;border-radius:14px;">
         -->
+        <div class="pix-info">
+          <strong class="cnpj-nome">Fundação Leopoldina SócioEducacional,<br>
+            Meio Ambiente, Pessoas com Deficiência e Cultura</strong>
+          <div class="pix-chave">
+            CNPJ: 18.303.296/0001-85
+          </div>
+        </div>
         <img id="qrCodePix" style="width:168px;height:168px;border-radius:14px;" />
 
         <div class="pix-key-block">
@@ -1652,6 +1720,16 @@ function restartVideo() {
   video.currentTime = 0;
   video.play();
 }
+
+const hint = document.querySelector('.sound-hint');
+
+btn.addEventListener('click', () => {
+  video.muted = false;
+  video.currentTime = 0;
+  video.play();
+
+  if (hint) hint.style.display = 'none';
+});
 // ════════════════════════════════════════════════
 // INIT
 // ════════════════════════════════════════════════
