@@ -24,9 +24,7 @@
   --text-muted:   #4E6652;
   --shadow-btn:   0 6px 24px rgba(76,175,80,0.42);
 }
-
 html{scroll-behavior:smooth}
-
 body{
   font-family:'Source Sans 3',sans-serif;
   font-size:18px;
@@ -36,14 +34,12 @@ body{
   overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
 }
-
 /* ── PROGRESS BAR ────────────────────────────── */
 .scroll-progress{
   position:fixed;top:0;left:0;height:3px;
   background:var(--green-btn);z-index:999;
   transition:width .1s linear;width:0%;
 }
-
 /* ── HERO ─────────────────────────────────────── */
 .hero{
   position:relative;width:100%;
@@ -53,13 +49,11 @@ body{
   align-items:center;justify-content:flex-end;
   padding-bottom:60px;
 }
-
 .hero-img{
   position:absolute;inset:0;
   width:100%;height:100%;
   object-fit:cover;object-position:center 30%;
 }
-
 .hero-overlay{
   position:absolute;inset:0;
   background:linear-gradient(
@@ -69,47 +63,39 @@ body{
     rgba(0,0,0,.78) 100%
   );
 }
-
 .hero-logo-bar{
   position:absolute;top:0;left:0;right:0;
   padding:20px 20px;
   display:flex;align-items:center;justify-content:center;
   z-index:3;
 }
-
 .hero-logo-img{
   height:72px;width:auto;
   filter:drop-shadow(0 2px 8px rgba(0,0,0,.45));
 }
-
 .hero-content{
   position:relative;z-index:2;
   text-align:center;padding:0 24px;
 }
-
 .hero-eyebrow{
   display:block;
   font-size:13px;font-weight:500;
   letter-spacing:.18em;text-transform:uppercase;
   color:var(--green-light);margin-bottom:14px;
 }
-
 .hero-title{
   font-family:'Lora',serif;
   font-size:clamp(42px,10vw,62px);
   font-weight:700;color:#fff;
   line-height:1.08;margin-bottom:18px;
 }
-
 .hero-title em{font-style:italic;color:var(--green-btn);}
-
 .hero-sub{
   font-size:19px;font-weight:300;
   color:rgba(255,255,255,.87);
   line-height:1.6;max-width:340px;
   margin:0 auto 36px;
 }
-
 .hero-cta{
   display:inline-flex;align-items:center;gap:10px;
   background:var(--green-btn);color:#fff;
@@ -122,7 +108,6 @@ body{
   -webkit-tap-highlight-color:transparent;
 }
 .hero-cta:active{transform:scale(.97);}
-
 .hero-scroll{
   position:absolute;bottom:18px;left:50%;
   transform:translateX(-50%);
@@ -131,21 +116,17 @@ body{
   animation:scrollBounce 2.2s infinite;
 }
 .hero-scroll span{font-size:11px;letter-spacing:.14em;color:rgba(255,255,255,.6);text-transform:uppercase;}
-
 @keyframes scrollBounce{
   0%,100%{transform:translateX(-50%) translateY(0);}
   50%{transform:translateX(-50%) translateY(7px);}
 }
-
 /* ── VÍDEO ──────────────────────────────────── */
 .video-section{background:var(--green-deep);}
-
 .video-wrapper{
   position:relative; /* 👈 ESSENCIAL */
   width:100%;
   padding-top:56.25%; /* 16:9 Aspect Ratio */
 }
-
 .video-wrapper video{
   position:absolute;
   inset:0;
@@ -153,7 +134,6 @@ body{
   height:100%;
   object-fit: cover;
 }
-
 .video-placeholder-block{
   position:absolute;inset:0;
   background:linear-gradient(160deg,#1B5E20,#2E7D32);
@@ -165,7 +145,6 @@ body{
   color:rgba(255,255,255,.45);font-size:14px;
   text-align:center;padding:0 32px;
 }
-
 .video-caption{
   background:var(--green-deep);
   padding:20px 24px;text-align:center;
@@ -175,32 +154,27 @@ body{
   font-style:italic;font-size:20px;
   color:var(--green-btn);line-height:1.5;
 }
-
 /* ── META MENSAL (NOVA) ──────────────────────── */
 .meta-section{
   background:var(--white);
   padding:48px 24px 40px;
   text-align:center;
 }
-
 .meta-label{
   font-size:13px;font-weight:500;
   letter-spacing:.16em;text-transform:uppercase;
   color:var(--green-main);margin-bottom:10px;
 }
-
 .meta-title{
   font-family:'Lora',serif;
   font-size:clamp(28px,7vw,40px);
   font-weight:700;color:var(--green-deep);
   margin-bottom:6px;line-height:1.1;
 }
-
 .meta-subtitle{
   font-size:17px;color:var(--text-muted);
   margin-bottom:28px;line-height:1.55;
 }
-
 .meta-bar-wrap{
   background:var(--green-light);
   border-radius:100px;
@@ -209,7 +183,6 @@ body{
   position:relative;
   max-width:440px;margin:0 auto 12px;
 }
-
 .meta-bar-fill{
   height:100%;
   background:linear-gradient(90deg,var(--green-main),var(--green-btn));
@@ -217,35 +190,29 @@ body{
   transition:width 1.2s cubic-bezier(.22,1,.36,1);
   width:0%;
 }
-
 .meta-bar-pct{
   position:absolute;right:12px;top:50%;
   transform:translateY(-50%);
   font-size:13px;font-weight:600;
   color:var(--green-deep);
 }
-
 .meta-bar-text{
   font-size:15px;color:var(--text-muted);
   max-width:440px;margin:0 auto;
   line-height:1.5;
 }
-
 .meta-bar-text strong{color:var(--green-deep);}
-
 /* ── IMPACTO / NÚMEROS ───────────────────────── */
 .impact-section{
   background:var(--cream);
   padding:64px 24px 56px;
   text-align:center;
 }
-
 .section-label{
   font-size:13px;font-weight:500;
   letter-spacing:.18em;text-transform:uppercase;
   color:var(--green-main);margin-bottom:12px;
 }
-
 .section-title{
   font-family:'Lora',serif;
   font-size:clamp(30px,8vw,46px);
@@ -253,13 +220,11 @@ body{
   line-height:1.1;margin-bottom:10px;
 }
 .section-title em{font-style:italic;color:var(--green-main);}
-
 .section-sub{
   font-size:18px;color:var(--text-muted);
   line-height:1.65;max-width:360px;
   margin:0 auto 40px;
 }
-
 /* Foto no lugar do stat principal */
 .impact-photo{
   width:100%;max-width:400px;
@@ -272,37 +237,31 @@ body{
   object-fit:cover;object-position:center 20%;
   display:block;
 }
-
 .stats-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:14px;max-width:400px;margin:0 auto;
 }
-
 .stat-card{
   background:var(--white);
   border-radius:20px;padding:26px 16px;
   border:1px solid rgba(76,175,80,.2);
 }
-
 .stat-number{
   font-family:'Lora',serif;
   font-size:46px;font-weight:700;
   color:var(--green-main);line-height:1;
   display:block;
 }
-
 .stat-label{
   font-size:15px;font-weight:400;
   color:var(--text-muted);margin-top:6px;
   line-height:1.4;
 }
-
 /* ── MISSÃO ──────────────────────────────────── */
 .mission-section{
   padding:64px 24px;background:var(--white);
 }
-
 .mission-photo{
   width:100%;border-radius:24px;
   overflow:hidden;margin-bottom:36px;
@@ -323,23 +282,19 @@ body{
   font-style:italic;font-size:23px;
   color:var(--green-deep);line-height:1.45;
 }
-
 .mission-text{
   font-size:18px;color:var(--text-muted);
   line-height:1.75;
 }
-
 /* ── COMO AJUDA ──────────────────────────────── */
 .how-section{
   background:var(--green-pale);
   padding:64px 24px;text-align:center;
 }
-
 .how-list{
   margin-top:36px;display:flex;
   flex-direction:column;gap:16px;text-align:left;
 }
-
 .how-item{
   background:var(--white);
   border-radius:20px;padding:22px 20px;
@@ -349,41 +304,34 @@ body{
   transition:opacity .5s ease,transform .5s ease;
 }
 .how-item.visible{opacity:1;transform:translateY(0);}
-
 .how-icon{
   width:52px;height:52px;border-radius:14px;
   background:var(--green-light);flex-shrink:0;
   display:flex;align-items:center;
   justify-content:center;font-size:26px;
 }
-
 .how-item-title{
   font-size:18px;font-weight:600;
   color:var(--green-deep);margin-bottom:5px;
 }
-
 .how-item-desc{
   font-size:16px;color:var(--text-muted);
   line-height:1.55;
 }
-
 /* ── FAQ ─────────────────────────────────────── */
 .faq-section{
   background:var(--white);
   padding:64px 24px;
 }
-
 .faq-list{
   margin-top:36px;
   display:flex;flex-direction:column;gap:12px;
 }
-
 .faq-item{
   border:1px solid rgba(76,175,80,.2);
   border-radius:18px;overflow:hidden;
   background:var(--cream);
 }
-
 .faq-question{
   width:100%;background:none;border:none;
   padding:20px 22px;
@@ -395,20 +343,17 @@ body{
   color:var(--green-deep);
   -webkit-tap-highlight-color:transparent;
 }
-
 .faq-icon{
   width:28px;height:28px;border-radius:50%;
   background:var(--green-light);flex-shrink:0;
   display:flex;align-items:center;justify-content:center;
   transition:transform .25s,background .25s;
 }
-
 .faq-item.open .faq-icon{
   transform:rotate(45deg);
   background:var(--green-btn);
 }
 .faq-item.open .faq-icon svg path{stroke:#fff;}
-
 .faq-answer{
   max-height:0;overflow:hidden;
   transition:max-height .35s ease,padding .25s ease;
@@ -418,13 +363,11 @@ body{
 .faq-item.open .faq-answer{
   max-height:400px;padding:0 22px 20px;
 }
-
 /* ── DOAÇÃO ──────────────────────────────────── */
 .donation-section{
   padding:64px 24px 120px;
   background:var(--cream);text-align:center;
 }
-
 .donation-card{
   background:var(--green-deep);
   border-radius:28px;padding:40px 22px;
@@ -436,24 +379,20 @@ body{
   width:180px;height:180px;border-radius:50%;
   background:rgba(102,187,106,.1);
 }
-
 .donation-card-title{
   font-family:'Lora',serif;
   font-size:32px;font-weight:700;
   color:#fff;line-height:1.2;margin-bottom:12px;
 }
-
 .donation-card-sub{
   font-size:17px;color:rgba(255,255,255,.65);
   line-height:1.6;margin-bottom:32px;
 }
-
 .donate-amounts{
   display:grid;
   grid-template-columns:1fr 1fr 1fr;
   gap:10px;margin-bottom:22px;
 }
-
 .amount-btn{
   background:rgba(255,255,255,.09);
   border:1px solid rgba(255,255,255,.22);
@@ -472,7 +411,6 @@ body{
   display:block;font-size:11px;
   font-weight:400;opacity:.65;margin-top:3px;
 }
-
 .donate-main-btn{
   width:100%;background:var(--green-btn);
   color:#fff;border:none;border-radius:100px;
@@ -486,14 +424,12 @@ body{
   -webkit-tap-highlight-color:transparent;
 }
 .donate-main-btn:active{transform:scale(.97);}
-
 .donate-security{
   margin-top:16px;font-size:14px;
   color:rgba(255,255,255,.4);
   display:flex;align-items:center;
   justify-content:center;gap:7px;
 }
-
 /* ── FLOATING BTN ──────────────────────────── */
 .float-btn{
   position:fixed;bottom:24px;left:50%;
@@ -516,7 +452,6 @@ body{
   opacity:0;pointer-events:none;
 }
 .float-btn:active{box-shadow:0 3px 14px rgba(76,175,80,.45);}
-
 .pulse-dot{
   width:9px;height:9px;border-radius:50%;
   background:#fff;position:relative;
@@ -531,7 +466,6 @@ body{
   0%{transform:scale(1);opacity:1;}
   100%{transform:scale(2.4);opacity:0;}
 }
-
 /* ── MODAL ──────────────────────────────────── */
 .modal-overlay{
   position:fixed;inset:0;
@@ -543,7 +477,6 @@ body{
   -webkit-backdrop-filter:blur(4px);
 }
 .modal-overlay.open{opacity:1;pointer-events:all;}
-
 .modal{
   background:var(--white);width:100%;
   border-radius:28px 28px 0 0;
@@ -554,13 +487,11 @@ body{
   -webkit-overflow-scrolling:touch;
 }
 .modal-overlay.open .modal{transform:translateY(0);}
-
 .modal-handle{
   width:38px;height:4px;
   background:#E0E0E0;border-radius:2px;
   margin:14px auto 0;
 }
-
 .modal-header{
   padding:18px 24px 0;
   display:flex;align-items:center;justify-content:space-between;
@@ -577,9 +508,7 @@ body{
   font-size:19px;color:var(--text-muted);
   -webkit-tap-highlight-color:transparent;
 }
-
 .modal-body{padding:20px 24px;}
-
 .pix-amount-display{
   background:var(--green-pale);
   border:2px solid var(--green-btn);
@@ -594,7 +523,6 @@ body{
 .pix-amount-display .sel-label{
   font-size:15px;color:var(--text-muted);margin-top:3px;
 }
-
 .pix-qr-area{
   display:flex;flex-direction:column;
   align-items:center;gap:14px;
@@ -603,7 +531,6 @@ body{
   border-bottom:1px solid rgba(0,0,0,.07);
   margin-bottom:22px;
 }
-
 .qr-placeholder{
   width:168px;height:168px;
   background:#f5f5f5;
@@ -614,7 +541,6 @@ body{
   gap:9px;color:#bbb;
   font-size:12px;text-align:center;
 }
-
 .pix-key-block{width:100%;}
 .pix-key-label{
   font-size:13px;font-weight:500;
@@ -659,9 +585,7 @@ body{
   color:#fff;
 }
 .modal-amounts .amount-label{font-size:10px;color:inherit;}
-
 .custom-amount-group{margin-bottom:16px;display:none;}
-
 .form-section{margin-top:24px;}
 .form-title{
   font-size:19px;font-weight:600;
@@ -689,7 +613,6 @@ body{
   border-color:var(--green-btn);
   background:var(--white);
 }
-
 .form-note{
   background:var(--green-pale);border-radius:14px;
   padding:16px 18px;font-size:15px;
@@ -697,7 +620,6 @@ body{
   margin-bottom:22px;
   display:flex;gap:10px;align-items:flex-start;
 }
-
 .form-submit{
   width:100%;background:var(--green-btn);color:#fff;
   border:none;border-radius:100px;
@@ -710,7 +632,6 @@ body{
 }
 .form-submit:active{transform:scale(.97);}
 .form-submit:disabled{opacity:.6;cursor:not-allowed;}
-
 /* ── SUCESSO ─────────────────────────────────── */
 .success-state{
   text-align:center;padding:40px 24px 36px;display:none;
@@ -731,7 +652,6 @@ body{
   font-size:17px;color:var(--text-muted);
   line-height:1.65;margin-bottom:28px;
 }
-
 /* ── FOOTER ──────────────────────────────────── */
 footer{
   background:var(--green-deep);
@@ -762,14 +682,12 @@ footer{
   line-height:1.65;
 }
 .footer-cnpj strong{color:rgba(255,255,255,.7);}
-
 /* ── ANIMAÇÕES ───────────────────────────────── */
 .fade-in{
   opacity:0;transform:translateY(30px);
   transition:opacity .7s ease,transform .7s ease;
 }
 .fade-in.visible{opacity:1;transform:translateY(0);}
-
 /* ── TOAST ───────────────────────────────────── */
 .toast{
   position:fixed;top:24px;left:50%;
@@ -781,7 +699,6 @@ footer{
   white-space:nowrap;
 }
 .toast.show{transform:translateX(-50%) translateY(0);}
-
 @media(max-width:360px){
   .donate-amounts{grid-template-columns:1fr 1fr;}
   body{font-size:16px;}
@@ -791,21 +708,17 @@ footer{
   .modal{max-width:480px;margin:0 auto;border-radius:28px;}
   .modal-overlay{align-items:center;}
 }
-
 .video-controls {
   top: 20px;
   right: 20px;
   z-index: 3;
-
   display: flex;
   align-items: center;
   gap: 10px;
-
   background: rgba(0, 0, 0, 0.6);
   padding: 10px 14px;
   border-radius: 10px;
 }
-
 /* Botões */
 .video-controls button {
   background: transparent;
@@ -814,7 +727,6 @@ footer{
   font-size: 14px;
   cursor: pointer;
 }
-
 /* Texto indicador */
 .sound-hint {
   color: #fff;
@@ -822,33 +734,27 @@ footer{
   font-weight: 500;
   opacity: 0.9;
 }
-
 .pix-info {
   text-align: center;
   margin-top: 15px;
 }
-
 .cnpj-nome {
   display: block;
   font-size: 18px;
   margin-bottom: 8px;
   color: #1b5e20;
 }
-
 .pix-chave {
   font-size: 16px;
 }
-
 .mapa {
   padding: 40px 20px;
   text-align: center;
   background: #f5f5f5;
 }
-
 .mapa h2 {
   margin-bottom: 20px;
 }
-
 .mapa iframe {
   width: 100%;
   height: 350px;
@@ -867,7 +773,7 @@ footer{
   <img class="hero-img" src="https://res.cloudinary.com/ddld9eop2/image/upload/v1777036037/IMG_2338_xh6ahw.jpg" alt="">
   <div class="hero-overlay"></div>
   <div class="hero-logo-bar">
-    <img class="hero-logo-img" src="https://res.cloudinary.com/ddld9eop2/image/upload/v1777036068/Logo_1_qldcsy.jpg" alt="">
+    <img class="hero-logo-img" src="https://res.cloudinary.com/ddld9eop2/image/upload/v1777168172/Logo_1_transparente_mh7hsb.jpg" alt="">
   </div>
 
   <div class="hero-content">
@@ -888,7 +794,7 @@ footer{
 <!-- ══ VÍDEO ══════════════════════════════════════ -->
 <section class="video-section">
   <div class="video-wrapper">
-      <video id="mainVideo" autoplay muted loop playsinline>
+      <video id="mainVideo" autoplay muted loop playsinline preload="metadata">
         <source src="https://res.cloudinary.com/ddld9eop2/video/upload/v1777031618/copy_F52CC690-16CF-4F3B-B69F-9CC68D285F65_s6l0du.mp4" type="video/mp4">
       </video>
   </div>
@@ -935,11 +841,11 @@ footer{
 
   <div class="stats-grid fade-in">
     <div class="stat-card">
-      <span class="stat-number">89%</span>
-      <p class="stat-label">das doações vão direto para a ação</p>
+      <span class="stat-number">+ 1238</span>
+      <p class="stat-label">Famílias impactadas</p>
     </div>
     <div class="stat-card">
-      <span class="stat-number">5+</span>
+      <span class="stat-number">6+</span>
       <p class="stat-label">anos de missão social</p>
     </div>
     <div class="stat-card">
@@ -1141,14 +1047,16 @@ footer{
   <iframe
     src="https://www.google.com/maps?q=Rua+Fernando+Lobo,+879,+Guadalupe,+Rio+de+Janeiro&output=embed"
     loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade">
+    referrerpolicy="no-referrer-when-downgrade"   width="100%"
+    height="300"
+    style="border:0;">
   </iframe>
 </section>
 
 <!-- ══ FOOTER ══════════════════════════════════════ -->
 <footer>
   <div class="footer-logo">
-    <img class="footer-logo-img" src="https://res.cloudinary.com/ddld9eop2/image/upload/v1777036069/Logo_2_jvhkvc.jpg" alt="">
+    <img class="footer-logo-img" src="https://res.cloudinary.com/ddld9eop2/image/upload/v1777168213/Logo_2_transparente_rlaxvr.jpg" alt="">
   </div>
   <h3 class="footer-title">Projeto Semente</h3>
   <p class="footer-text">Juntos, transformamos realidades.<br>Cada semente plantada hoje é uma árvore amanhã.</p>
@@ -1247,7 +1155,7 @@ footer{
       <!-- Formulário -->
       <div class="form-section">
         <p class="form-title">Deixe seu contato (opcional)</p>
-        <p class="form-subtitle">Após fazer o PIX, preencha abaixo — vamos te agradecer! 💚</p>
+        <p class="form-subtitle">Após fazer o PIX, preencha abaixo — queremos te agradecer! 💚</p>
 
         <div class="form-group">
           <label class="form-label" for="donorName">Seu nome</label>
@@ -1735,6 +1643,8 @@ btn.addEventListener('click', () => {
 // ════════════════════════════════════════════════
 fetchMetaFromSheets();
 
+  
 </script>
+<script src="script.js" defer></script>
 </body>
 </html>
