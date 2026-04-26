@@ -1452,6 +1452,7 @@ async function submitForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
+      setTimeout(fetchMetaFromSheets, 800);
     } catch (e) {
       console.warn('Webhook error:', e);
     }
