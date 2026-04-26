@@ -1216,7 +1216,7 @@ let META_ATUAL = 2000;
 // ════════════════════════════════════════════════
 async function fetchMetaFromSheets() {
   try {
-    const res = await fetch(SHEETS_WEBHOOK + '?action=getMeta');
+    const res = await fetch(SHEETS_WEBHOOK + '?action=getMeta&_=' + Date.now());
     const data = await res.json();
 
     console.log('META API:', data); // 👈 DEBUG
@@ -1448,11 +1448,12 @@ async function submitForm() {
     try {
       await fetch(SHEETS_WEBHOOK, {
         method: 'POST',
-        mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
-      setTimeout(fetchMetaFromSheets, 800);
+      setTimeout(() => {
+        fetchMetaFromSheets();
+      },    1000);
     } catch (e) {
       console.warn('Webhook error:', e);
     }
