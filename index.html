@@ -5,9 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <meta name="description" content="Projeto Semente — Fundação Leopoldina. Doe agora e transforme vidas.">
 <title>Projeto Semente — Fundação Leopoldina</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,600&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+<!-- Fontes do sistema: Arial -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
@@ -24,9 +23,11 @@
   --text-muted:   #4E6652;
   --shadow-btn:   0 6px 24px rgba(76,175,80,0.42);
 }
+
 html{scroll-behavior:smooth}
+
 body{
-  font-family:'Source Sans 3',sans-serif;
+  font-family:Arial,Helvetica,sans-serif;
   font-size:18px;
   line-height:1.7;
   background:var(--white);
@@ -34,12 +35,14 @@ body{
   overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
 }
+
 /* ── PROGRESS BAR ────────────────────────────── */
 .scroll-progress{
   position:fixed;top:0;left:0;height:3px;
   background:var(--green-btn);z-index:999;
   transition:width .1s linear;width:0%;
 }
+
 /* ── HERO ─────────────────────────────────────── */
 .hero{
   position:relative;width:100%;
@@ -49,11 +52,13 @@ body{
   align-items:center;justify-content:flex-end;
   padding-bottom:60px;
 }
+
 .hero-img{
   position:absolute;inset:0;
   width:100%;height:100%;
   object-fit:cover;object-position:center 30%;
 }
+
 .hero-overlay{
   position:absolute;inset:0;
   background:linear-gradient(
@@ -63,43 +68,51 @@ body{
     rgba(0,0,0,.78) 100%
   );
 }
+
 .hero-logo-bar{
   position:absolute;top:0;left:0;right:0;
   padding:20px 20px;
   display:flex;align-items:center;justify-content:center;
   z-index:3;
 }
+
 .hero-logo-img{
   height:72px;width:auto;
   filter:drop-shadow(0 2px 8px rgba(0,0,0,.45));
 }
+
 .hero-content{
   position:relative;z-index:2;
   text-align:center;padding:0 24px;
 }
+
 .hero-eyebrow{
   display:block;
   font-size:13px;font-weight:500;
   letter-spacing:.18em;text-transform:uppercase;
   color:var(--green-light);margin-bottom:14px;
 }
+
 .hero-title{
-  font-family:'Lora',serif;
+  font-family:Arial,'Arial Black',Helvetica,sans-serif;
   font-size:clamp(42px,10vw,62px);
   font-weight:700;color:#fff;
   line-height:1.08;margin-bottom:18px;
 }
+
 .hero-title em{font-style:italic;color:var(--green-btn);}
+
 .hero-sub{
   font-size:19px;font-weight:300;
   color:rgba(255,255,255,.87);
   line-height:1.6;max-width:340px;
   margin:0 auto 36px;
 }
+
 .hero-cta{
   display:inline-flex;align-items:center;gap:10px;
   background:var(--green-btn);color:#fff;
-  font-family:'Source Sans 3',sans-serif;
+  font-family:Arial,Helvetica,sans-serif;
   font-size:19px;font-weight:600;
   padding:18px 38px;border-radius:100px;
   text-decoration:none;border:none;cursor:pointer;
@@ -108,6 +121,7 @@ body{
   -webkit-tap-highlight-color:transparent;
 }
 .hero-cta:active{transform:scale(.97);}
+
 .hero-scroll{
   position:absolute;bottom:18px;left:50%;
   transform:translateX(-50%);
@@ -116,24 +130,85 @@ body{
   animation:scrollBounce 2.2s infinite;
 }
 .hero-scroll span{font-size:11px;letter-spacing:.14em;color:rgba(255,255,255,.6);text-transform:uppercase;}
+
 @keyframes scrollBounce{
   0%,100%{transform:translateX(-50%) translateY(0);}
   50%{transform:translateX(-50%) translateY(7px);}
 }
+
 /* ── VÍDEO ──────────────────────────────────── */
 .video-section{background:var(--green-deep);}
+
 .video-wrapper{
-  position:relative; /* 👈 ESSENCIAL */
-  width:100%;
-  padding-top:56.25%; /* 16:9 Aspect Ratio */
+  position:relative;width:100%;
+  padding-top:56.25%;
 }
+
 .video-wrapper video{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit: cover;
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
 }
+
+/* ── BOTÃO DE SOM ─────────────────────────────── */
+.sound-btn{
+  position:absolute;
+  bottom:16px;right:16px;
+  z-index:10;
+  display:flex;align-items:center;gap:8px;
+  background:rgba(0,0,0,.55);
+  border:1.5px solid rgba(255,255,255,.3);
+  border-radius:100px;
+  padding:10px 18px 10px 14px;
+  color:#fff;cursor:pointer;
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:14px;font-weight:500;
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  transition:background .2s,transform .15s,border-color .2s;
+  -webkit-tap-highlight-color:transparent;
+}
+.sound-btn:active{transform:scale(.95);}
+.sound-btn:hover{
+  background:rgba(0,0,0,.75);
+  border-color:rgba(255,255,255,.6);
+}
+.sound-btn.on{
+  background:rgba(27,94,32,.75);
+  border-color:var(--green-btn);
+}
+.sound-btn svg{flex-shrink:0;transition:opacity .2s;}
+
+/* Animação de ondas de som quando ligado */
+.sound-wave{
+  display:flex;align-items:center;gap:2px;
+  height:14px;
+}
+.sound-wave span{
+  display:block;width:3px;border-radius:2px;
+  background:var(--green-btn);
+  animation:soundWave 0.8s ease-in-out infinite alternate;
+}
+.sound-wave span:nth-child(1){height:5px;animation-delay:0s;}
+.sound-wave span:nth-child(2){height:10px;animation-delay:.15s;}
+.sound-wave span:nth-child(3){height:14px;animation-delay:.3s;}
+.sound-wave span:nth-child(4){height:8px;animation-delay:.45s;}
+.sound-wave span:nth-child(5){height:4px;animation-delay:.6s;}
+
+@keyframes soundWave{
+  0%{transform:scaleY(.4);}
+  100%{transform:scaleY(1);}
+}
+
+/* Pulse inicial para chamar atenção */
+.sound-btn.pulse-hint{
+  animation:pulseHint 2s ease-in-out 2;
+}
+@keyframes pulseHint{
+  0%,100%{box-shadow:none;}
+  50%{box-shadow:0 0 0 6px rgba(102,187,106,.35);}
+}
+
 .video-placeholder-block{
   position:absolute;inset:0;
   background:linear-gradient(160deg,#1B5E20,#2E7D32);
@@ -145,36 +220,42 @@ body{
   color:rgba(255,255,255,.45);font-size:14px;
   text-align:center;padding:0 32px;
 }
+
 .video-caption{
   background:var(--green-deep);
   padding:20px 24px;text-align:center;
 }
 .video-caption p{
-  font-family:'Lora',serif;
+  font-family:Arial,'Arial Black',Helvetica,sans-serif;
   font-style:italic;font-size:20px;
   color:var(--green-btn);line-height:1.5;
 }
+
 /* ── META MENSAL (NOVA) ──────────────────────── */
 .meta-section{
   background:var(--white);
   padding:48px 24px 40px;
   text-align:center;
 }
+
 .meta-label{
   font-size:13px;font-weight:500;
   letter-spacing:.16em;text-transform:uppercase;
   color:var(--green-main);margin-bottom:10px;
 }
+
 .meta-title{
-  font-family:'Lora',serif;
+  font-family:Arial,'Arial Black',Helvetica,sans-serif;
   font-size:clamp(28px,7vw,40px);
   font-weight:700;color:var(--green-deep);
   margin-bottom:6px;line-height:1.1;
 }
+
 .meta-subtitle{
   font-size:17px;color:var(--text-muted);
   margin-bottom:28px;line-height:1.55;
 }
+
 .meta-bar-wrap{
   background:var(--green-light);
   border-radius:100px;
@@ -183,6 +264,7 @@ body{
   position:relative;
   max-width:440px;margin:0 auto 12px;
 }
+
 .meta-bar-fill{
   height:100%;
   background:linear-gradient(90deg,var(--green-main),var(--green-btn));
@@ -190,41 +272,49 @@ body{
   transition:width 1.2s cubic-bezier(.22,1,.36,1);
   width:0%;
 }
+
 .meta-bar-pct{
   position:absolute;right:12px;top:50%;
   transform:translateY(-50%);
   font-size:13px;font-weight:600;
   color:var(--green-deep);
 }
+
 .meta-bar-text{
   font-size:15px;color:var(--text-muted);
   max-width:440px;margin:0 auto;
   line-height:1.5;
 }
+
 .meta-bar-text strong{color:var(--green-deep);}
+
 /* ── IMPACTO / NÚMEROS ───────────────────────── */
 .impact-section{
   background:var(--cream);
   padding:64px 24px 56px;
   text-align:center;
 }
+
 .section-label{
   font-size:13px;font-weight:500;
   letter-spacing:.18em;text-transform:uppercase;
   color:var(--green-main);margin-bottom:12px;
 }
+
 .section-title{
-  font-family:'Lora',serif;
+  font-family:Arial,'Arial Black',Helvetica,sans-serif;
   font-size:clamp(30px,8vw,46px);
   font-weight:700;color:var(--green-deep);
   line-height:1.1;margin-bottom:10px;
 }
 .section-title em{font-style:italic;color:var(--green-main);}
+
 .section-sub{
   font-size:18px;color:var(--text-muted);
   line-height:1.65;max-width:360px;
   margin:0 auto 40px;
 }
+
 /* Foto no lugar do stat principal */
 .impact-photo{
   width:100%;max-width:400px;
@@ -237,31 +327,37 @@ body{
   object-fit:cover;object-position:center 20%;
   display:block;
 }
+
 .stats-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:14px;max-width:400px;margin:0 auto;
 }
+
 .stat-card{
   background:var(--white);
   border-radius:20px;padding:26px 16px;
   border:1px solid rgba(76,175,80,.2);
 }
+
 .stat-number{
-  font-family:'Lora',serif;
+  font-family:Arial,'Arial Black',Helvetica,sans-serif;
   font-size:46px;font-weight:700;
   color:var(--green-main);line-height:1;
   display:block;
 }
+
 .stat-label{
   font-size:15px;font-weight:400;
   color:var(--text-muted);margin-top:6px;
   line-height:1.4;
 }
+
 /* ── MISSÃO ──────────────────────────────────── */
 .mission-section{
   padding:64px 24px;background:var(--white);
 }
+
 .mission-photo{
   width:100%;border-radius:24px;
   overflow:hidden;margin-bottom:36px;
@@ -278,23 +374,27 @@ body{
   padding-left:22px;margin:24px 0 20px;
 }
 .mission-quote blockquote{
-  font-family:'Lora',serif;
+  font-family:Arial,'Arial Black',Helvetica,sans-serif;
   font-style:italic;font-size:23px;
   color:var(--green-deep);line-height:1.45;
 }
+
 .mission-text{
   font-size:18px;color:var(--text-muted);
   line-height:1.75;
 }
+
 /* ── COMO AJUDA ──────────────────────────────── */
 .how-section{
   background:var(--green-pale);
   padding:64px 24px;text-align:center;
 }
+
 .how-list{
   margin-top:36px;display:flex;
   flex-direction:column;gap:16px;text-align:left;
 }
+
 .how-item{
   background:var(--white);
   border-radius:20px;padding:22px 20px;
@@ -304,56 +404,66 @@ body{
   transition:opacity .5s ease,transform .5s ease;
 }
 .how-item.visible{opacity:1;transform:translateY(0);}
+
 .how-icon{
   width:52px;height:52px;border-radius:14px;
   background:var(--green-light);flex-shrink:0;
   display:flex;align-items:center;
   justify-content:center;font-size:26px;
 }
+
 .how-item-title{
   font-size:18px;font-weight:600;
   color:var(--green-deep);margin-bottom:5px;
 }
+
 .how-item-desc{
   font-size:16px;color:var(--text-muted);
   line-height:1.55;
 }
+
 /* ── FAQ ─────────────────────────────────────── */
 .faq-section{
   background:var(--white);
   padding:64px 24px;
 }
+
 .faq-list{
   margin-top:36px;
   display:flex;flex-direction:column;gap:12px;
 }
+
 .faq-item{
   border:1px solid rgba(76,175,80,.2);
   border-radius:18px;overflow:hidden;
   background:var(--cream);
 }
+
 .faq-question{
   width:100%;background:none;border:none;
   padding:20px 22px;
   display:flex;align-items:center;
   justify-content:space-between;gap:12px;
   cursor:pointer;text-align:left;
-  font-family:'Source Sans 3',sans-serif;
+  font-family:Arial,Helvetica,sans-serif;
   font-size:18px;font-weight:600;
   color:var(--green-deep);
   -webkit-tap-highlight-color:transparent;
 }
+
 .faq-icon{
   width:28px;height:28px;border-radius:50%;
   background:var(--green-light);flex-shrink:0;
   display:flex;align-items:center;justify-content:center;
   transition:transform .25s,background .25s;
 }
+
 .faq-item.open .faq-icon{
   transform:rotate(45deg);
   background:var(--green-btn);
 }
 .faq-item.open .faq-icon svg path{stroke:#fff;}
+
 .faq-answer{
   max-height:0;overflow:hidden;
   transition:max-height .35s ease,padding .25s ease;
@@ -363,11 +473,13 @@ body{
 .faq-item.open .faq-answer{
   max-height:400px;padding:0 22px 20px;
 }
+
 /* ── DOAÇÃO ──────────────────────────────────── */
 .donation-section{
   padding:64px 24px 120px;
   background:var(--cream);text-align:center;
 }
+
 .donation-card{
   background:var(--green-deep);
   border-radius:28px;padding:40px 22px;
@@ -379,26 +491,30 @@ body{
   width:180px;height:180px;border-radius:50%;
   background:rgba(102,187,106,.1);
 }
+
 .donation-card-title{
-  font-family:'Lora',serif;
+  font-family:Arial,'Arial Black',Helvetica,sans-serif;
   font-size:32px;font-weight:700;
   color:#fff;line-height:1.2;margin-bottom:12px;
 }
+
 .donation-card-sub{
   font-size:17px;color:rgba(255,255,255,.65);
   line-height:1.6;margin-bottom:32px;
 }
+
 .donate-amounts{
   display:grid;
   grid-template-columns:1fr 1fr 1fr;
   gap:10px;margin-bottom:22px;
 }
+
 .amount-btn{
   background:rgba(255,255,255,.09);
   border:1px solid rgba(255,255,255,.22);
   border-radius:16px;padding:16px 8px;
   color:#fff;
-  font-family:'Source Sans 3',sans-serif;
+  font-family:Arial,Helvetica,sans-serif;
   font-size:16px;font-weight:600;
   cursor:pointer;transition:all .15s;
   -webkit-tap-highlight-color:transparent;
@@ -411,11 +527,12 @@ body{
   display:block;font-size:11px;
   font-weight:400;opacity:.65;margin-top:3px;
 }
+
 .donate-main-btn{
   width:100%;background:var(--green-btn);
   color:#fff;border:none;border-radius:100px;
   padding:20px 24px;
-  font-family:'Source Sans 3',sans-serif;
+  font-family:Arial,Helvetica,sans-serif;
   font-size:19px;font-weight:600;
   cursor:pointer;box-shadow:var(--shadow-btn);
   display:flex;align-items:center;
@@ -424,12 +541,14 @@ body{
   -webkit-tap-highlight-color:transparent;
 }
 .donate-main-btn:active{transform:scale(.97);}
+
 .donate-security{
   margin-top:16px;font-size:14px;
   color:rgba(255,255,255,.4);
   display:flex;align-items:center;
   justify-content:center;gap:7px;
 }
+
 /* ── FLOATING BTN ──────────────────────────── */
 .float-btn{
   position:fixed;bottom:24px;left:50%;
@@ -437,7 +556,7 @@ body{
   background:var(--green-btn);color:#fff;
   border:none;border-radius:100px;
   padding:16px 34px;
-  font-family:'Source Sans 3',sans-serif;
+  font-family:Arial,Helvetica,sans-serif;
   font-size:17px;font-weight:600;
   cursor:pointer;
   box-shadow:0 8px 30px rgba(76,175,80,.55);
@@ -452,6 +571,7 @@ body{
   opacity:0;pointer-events:none;
 }
 .float-btn:active{box-shadow:0 3px 14px rgba(76,175,80,.45);}
+
 .pulse-dot{
   width:9px;height:9px;border-radius:50%;
   background:#fff;position:relative;
@@ -466,6 +586,7 @@ body{
   0%{transform:scale(1);opacity:1;}
   100%{transform:scale(2.4);opacity:0;}
 }
+
 /* ── MODAL ──────────────────────────────────── */
 .modal-overlay{
   position:fixed;inset:0;
@@ -477,6 +598,7 @@ body{
   -webkit-backdrop-filter:blur(4px);
 }
 .modal-overlay.open{opacity:1;pointer-events:all;}
+
 .modal{
   background:var(--white);width:100%;
   border-radius:28px 28px 0 0;
@@ -487,17 +609,19 @@ body{
   -webkit-overflow-scrolling:touch;
 }
 .modal-overlay.open .modal{transform:translateY(0);}
+
 .modal-handle{
   width:38px;height:4px;
   background:#E0E0E0;border-radius:2px;
   margin:14px auto 0;
 }
+
 .modal-header{
   padding:18px 24px 0;
   display:flex;align-items:center;justify-content:space-between;
 }
 .modal-title{
-  font-family:'Lora',serif;
+  font-family:Arial,'Arial Black',Helvetica,sans-serif;
   font-size:28px;font-weight:700;
   color:var(--green-deep);
 }
@@ -508,7 +632,9 @@ body{
   font-size:19px;color:var(--text-muted);
   -webkit-tap-highlight-color:transparent;
 }
+
 .modal-body{padding:20px 24px;}
+
 .pix-amount-display{
   background:var(--green-pale);
   border:2px solid var(--green-btn);
@@ -516,13 +642,14 @@ body{
   text-align:center;margin-bottom:20px;
 }
 .pix-amount-display .sel-amount{
-  font-family:'Lora',serif;
+  font-family:Arial,'Arial Black',Helvetica,sans-serif;
   font-size:40px;font-weight:700;
   color:var(--green-deep);display:block;
 }
 .pix-amount-display .sel-label{
   font-size:15px;color:var(--text-muted);margin-top:3px;
 }
+
 .pix-qr-area{
   display:flex;flex-direction:column;
   align-items:center;gap:14px;
@@ -531,6 +658,7 @@ body{
   border-bottom:1px solid rgba(0,0,0,.07);
   margin-bottom:22px;
 }
+
 .qr-placeholder{
   width:168px;height:168px;
   background:#f5f5f5;
@@ -541,6 +669,7 @@ body{
   gap:9px;color:#bbb;
   font-size:12px;text-align:center;
 }
+
 .pix-key-block{width:100%;}
 .pix-key-label{
   font-size:13px;font-weight:500;
@@ -562,7 +691,7 @@ body{
 .pix-copy-btn{
   padding:14px 18px;background:var(--green-main);
   border:none;color:#fff;
-  font-family:'Source Sans 3',sans-serif;
+  font-family:Arial,Helvetica,sans-serif;
   font-size:14px;font-weight:600;cursor:pointer;
   flex-shrink:0;transition:background .15s;
   -webkit-tap-highlight-color:transparent;
@@ -585,7 +714,9 @@ body{
   color:#fff;
 }
 .modal-amounts .amount-label{font-size:10px;color:inherit;}
+
 .custom-amount-group{margin-bottom:16px;display:none;}
+
 .form-section{margin-top:24px;}
 .form-title{
   font-size:19px;font-weight:600;
@@ -604,7 +735,7 @@ body{
   width:100%;background:var(--cream);
   border:1px solid rgba(0,0,0,.12);
   border-radius:14px;padding:16px 18px;
-  font-family:'Source Sans 3',sans-serif;
+  font-family:Arial,Helvetica,sans-serif;
   font-size:17px;color:var(--text-dark);
   outline:none;transition:border-color .2s;
   -webkit-appearance:none;appearance:none;
@@ -613,6 +744,7 @@ body{
   border-color:var(--green-btn);
   background:var(--white);
 }
+
 .form-note{
   background:var(--green-pale);border-radius:14px;
   padding:16px 18px;font-size:15px;
@@ -620,11 +752,12 @@ body{
   margin-bottom:22px;
   display:flex;gap:10px;align-items:flex-start;
 }
+
 .form-submit{
   width:100%;background:var(--green-btn);color:#fff;
   border:none;border-radius:100px;
   padding:18px 24px;
-  font-family:'Source Sans 3',sans-serif;
+  font-family:Arial,Helvetica,sans-serif;
   font-size:18px;font-weight:600;cursor:pointer;
   box-shadow:var(--shadow-btn);margin-bottom:28px;
   transition:transform .15s;
@@ -632,6 +765,7 @@ body{
 }
 .form-submit:active{transform:scale(.97);}
 .form-submit:disabled{opacity:.6;cursor:not-allowed;}
+
 /* ── SUCESSO ─────────────────────────────────── */
 .success-state{
   text-align:center;padding:40px 24px 36px;display:none;
@@ -644,7 +778,7 @@ body{
   display:flex;align-items:center;justify-content:center;
 }
 .success-title{
-  font-family:'Lora',serif;
+  font-family:Arial,'Arial Black',Helvetica,sans-serif;
   font-size:30px;font-weight:700;
   color:var(--green-deep);margin-bottom:10px;
 }
@@ -652,6 +786,7 @@ body{
   font-size:17px;color:var(--text-muted);
   line-height:1.65;margin-bottom:28px;
 }
+
 /* ── FOOTER ──────────────────────────────────── */
 footer{
   background:var(--green-deep);
@@ -665,7 +800,7 @@ footer{
   filter:brightness(1.1) drop-shadow(0 2px 8px rgba(0,0,0,.3));
 }
 .footer-title{
-  font-family:'Lora',serif;font-size:22px;
+  font-family:Arial,'Arial Black',Helvetica,sans-serif;font-size:22px;
   font-weight:600;color:#fff;margin-bottom:8px;
 }
 .footer-text{
@@ -682,12 +817,14 @@ footer{
   line-height:1.65;
 }
 .footer-cnpj strong{color:rgba(255,255,255,.7);}
+
 /* ── ANIMAÇÕES ───────────────────────────────── */
 .fade-in{
   opacity:0;transform:translateY(30px);
   transition:opacity .7s ease,transform .7s ease;
 }
 .fade-in.visible{opacity:1;transform:translateY(0);}
+
 /* ── TOAST ───────────────────────────────────── */
 .toast{
   position:fixed;top:24px;left:50%;
@@ -699,6 +836,7 @@ footer{
   white-space:nowrap;
 }
 .toast.show{transform:translateX(-50%) translateY(0);}
+
 @media(max-width:360px){
   .donate-amounts{grid-template-columns:1fr 1fr;}
   body{font-size:16px;}
@@ -707,59 +845,6 @@ footer{
   .float-btn{max-width:340px;}
   .modal{max-width:480px;margin:0 auto;border-radius:28px;}
   .modal-overlay{align-items:center;}
-}
-.video-controls {
-  top: 20px;
-  right: 20px;
-  z-index: 3;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: rgba(0, 0, 0, 0.6);
-  padding: 10px 14px;
-  border-radius: 10px;
-}
-/* Botões */
-.video-controls button {
-  background: transparent;
-  border: none;
-  color: #fff;
-  font-size: 14px;
-  cursor: pointer;
-}
-/* Texto indicador */
-.sound-hint {
-  color: #fff;
-  font-size: 13px;
-  font-weight: 500;
-  opacity: 0.9;
-}
-.pix-info {
-  text-align: center;
-  margin-top: 15px;
-}
-.cnpj-nome {
-  display: block;
-  font-size: 18px;
-  margin-bottom: 8px;
-  color: #1b5e20;
-}
-.pix-chave {
-  font-size: 16px;
-}
-.mapa {
-  padding: 40px 20px;
-  text-align: center;
-  background: #f5f5f5;
-}
-.mapa h2 {
-  margin-bottom: 20px;
-}
-.mapa iframe {
-  width: 100%;
-  height: 350px;
-  border: 0;
-  border-radius: 12px;
 }
 </style>
 </head>
@@ -770,10 +855,11 @@ footer{
 
 <!-- ══ HERO ══════════════════════════════════════ -->
 <section class="hero">
-  <img class="hero-img" src="https://res.cloudinary.com/ddld9eop2/image/upload/v1777036037/IMG_2338_xh6ahw.jpg" alt="">
+  <img class="hero-img" src="https://res.cloudinary.com/ddld9eop2/image/upload/v1777036037/IMG_2338_xh6ahw.jpg"
   <div class="hero-overlay"></div>
+
   <div class="hero-logo-bar">
-    <img class="hero-logo-img" src="https://res.cloudinary.com/ddld9eop2/image/upload/v1777168172/Logo_1_transparente_mh7hsb.jpg" alt="">
+    <img class="hero-logo-img" src="https://res.cloudinary.com/ddld9eop2/image/upload/v1777168172/Logo_1_transparente_mh7hsb.jpg">
   </div>
 
   <div class="hero-content">
@@ -794,29 +880,48 @@ footer{
 <!-- ══ VÍDEO ══════════════════════════════════════ -->
 <section class="video-section">
   <div class="video-wrapper">
-      <video id="mainVideo" autoplay muted loop playsinline preload="metadata">
-        <source src="https://res.cloudinary.com/ddld9eop2/video/upload/v1777031618/copy_F52CC690-16CF-4F3B-B69F-9CC68D285F65_s6l0du.mp4" type="video/mp4">
-      </video>
+
+    <!--
+      INSTRUÇÃO: substitua o src pelo caminho do seu vídeo.
+      Converta .mov → .mp4:
+        ffmpeg -i video.mov -c:v libx264 -c:a aac -movflags faststart assets/videos/video-semente.mp4
+    -->
+    <video id="projetoVideo" autoplay muted loop playsinline
+           poster="assets/img/video-thumb.jpg">
+      <source src="https://res.cloudinary.com/ddld9eop2/video/upload/v1777034363/copy_F52CC690-16CF-4F3B-B69F-9CC68D285F65_kjpcis.mp4" type="video/mp4">
+    </video>
+
+    <!-- Botão de som — aparece sobre o vídeo -->
+    <button class="sound-btn pulse-hint" id="soundBtn" onclick="toggleSound()" aria-label="Ativar/desativar som">
+
+      <!-- Ícone mudo (estado inicial) -->
+      <svg id="iconMuted" width="20" height="20" viewBox="0 0 24 24" fill="white">
+        <path d="M16.5 12A4.5 4.5 0 0 0 14 7.97V10.18l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.8 8.8 0 0 0 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06A8.99 8.99 0 0 0 17.73 18l1.73 1.73L21 18.46 5.54 3 4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+      </svg>
+
+      <!-- Ícone com som (estado ativo) -->
+      <svg id="iconSound" width="20" height="20" viewBox="0 0 24 24" fill="white" style="display:none;">
+        <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+      </svg>
+
+      <!-- Ondas animadas (visíveis só com som ligado) -->
+      <div class="sound-wave" id="soundWave" style="display:none;">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+
+      <span id="soundLabel">Ligar som</span>
+    </button>
+
   </div>
   <div class="video-caption">
     <p>"Cada doação é uma semente que germina em uma vida transformada."</p>
-  </div>
-    <!-- CONTROLES CUSTOM -->
-  <div class="video-controls">
-    <button onclick="toggleSound()" id="soundBtn">🔇</button>
-
-    <span class="sound-hint">
-      Toque para ouvir a mensagem
-    </span>
-
-    <button onclick="restartVideo()" id="btnReplay">🔄 Reiniciar</button>
   </div>
 </section>
 
 <!-- ══ META MENSAL ════════════════════════════════ -->
 <section class="meta-section" id="meta">
   <p class="meta-label">Meta do mês</p>
-  <h2 class="meta-title">Ajude a completar<br>nossa meta de abril</h2>
+  <h2 class="meta-title">Ajude a completar<br>nossa meta do mês</h2>
   <p class="meta-subtitle">Cada doação enche essa barra de esperança.</p>
 
   <div class="meta-bar-wrap">
@@ -835,14 +940,15 @@ footer{
   <h2 class="section-title fade-in">Números que<br><em>emocionam.</em></h2>
   <p class="section-sub fade-in">Cada real doado chega diretamente para quem precisa — com transparência e amor.</p>
 
+  <!-- FOTO NO LUGAR DO NÚMERO PRINCIPAL -->
   <div class="impact-photo fade-in">
-    <img src="https://res.cloudinary.com/ddld9eop2/image/upload/v1777036059/IMG_2386_bilqfg.jpg" alt="">
+    <img src="https://res.cloudinary.com/ddld9eop2/image/upload/v1777036037/IMG_2323_x9r7uo.jpg">
   </div>
 
   <div class="stats-grid fade-in">
     <div class="stat-card">
-      <span class="stat-number">+ 1238</span>
-      <p class="stat-label">Famílias impactadas</p>
+      <span class="stat-number">+1238</span>
+      <p class="stat-label">das doações vão direto para a ação</p>
     </div>
     <div class="stat-card">
       <span class="stat-number">6+</span>
@@ -862,7 +968,7 @@ footer{
 <!-- ══ MISSÃO ═════════════════════════════════════ -->
 <section class="mission-section">
   <div class="mission-photo fade-in">
-    <img src="https://res.cloudinary.com/ddld9eop2/image/upload/v1777036057/IMG_2396_l28xmc.jpg" alt="">
+    <img src="https://res.cloudinary.com/ddld9eop2/image/upload/v1777036034/IMG_2314_l6fov2.jpg" alt="">
   </div>
 
   <p class="section-label fade-in">Nossa missão</p>
@@ -1039,7 +1145,8 @@ footer{
     </p>
   </div>
 </section>
-<!-- ══ MAPA ══════════════════════════════════════ -->
+
+<!-- ══ Mapa ══════════════════════════════════════ -->
 
 <section class="mapa">
   <h2>Onde estamos</h2>
@@ -1133,14 +1240,17 @@ footer{
           <img src="data:image/png;base64,SEU_QR_BASE64" alt="QR Code PIX"
                style="width:168px;height:168px;border-radius:14px;">
         -->
-        <div class="pix-info">
-          <strong class="cnpj-nome">Fundação Leopoldina SócioEducacional,<br>
-            Meio Ambiente, Pessoas com Deficiência e Cultura</strong>
-          <div class="pix-chave">
-            CNPJ: 18.303.296/0001-85
-          </div>
+        <div id="qrCodeContainer" style="
+          width:168px;height:168px;
+          border-radius:14px;overflow:hidden;
+          background:#fff;
+          display:flex;align-items:center;justify-content:center;
+          border:1px solid #E0E0E0;
+        ">
+          <p style="font-size:12px;color:#bbb;text-align:center;padding:8px;">
+            Gerando QR Code...
+          </p>
         </div>
-        <img id="qrCodePix" style="width:168px;height:168px;border-radius:14px;" />
 
         <div class="pix-key-block">
           <p class="pix-key-label">Chave PIX (CNPJ)</p>
@@ -1197,154 +1307,229 @@ footer{
 
 <script>
 // ════════════════════════════════════════════════
-// CONFIGURAÇÕES — editar conforme necessário
+// ⚙️  CONFIGURAÇÃO — cole a URL do Apps Script
 // ════════════════════════════════════════════════
-
-// Google Apps Script Web App URL (POST = salva doação, GET = lê total arrecadado)
-const SHEETS_WEBHOOK = 'https://script.google.com/macros/s/AKfycbwuomulhjl-n0JaLM2P3uhwb5Ze6U56DC-DVGWr5O8C1HWbBRJEnz_N3GX47d7bujLJNQ/exec'; // Ex: 'https://script.google.com/macros/s/SEU_ID/exec'
-
+const SHEETS_WEBHOOK = 'https://script.google.com/macros/s/AKfycbwuomulhjl-n0JaLM2P3uhwb5Ze6U56DC-DVGWr5O8C1HWbBRJEnz_N3GX47d7bujLJNQ/exec'; // 👈 cole aqui sua URL
 
 // ════════════════════════════════════════════════
-// ESTADO
+// ESTADO GLOBAL
 // ════════════════════════════════════════════════
-let selectedValue = 20;
-let selectedLabel = 'Um abraço';
-let META_ATUAL = 2000;
+let selectedValue  = 20;
+let selectedLabel  = 'Um abraço';
+let META_ATUAL     = 2000;
+let metaJaAnimou   = false;
 
 // ════════════════════════════════════════════════
-// META MENSAL — busca total real do Sheets via GET
+// META — busca meta e total do Sheets
 // ════════════════════════════════════════════════
 async function fetchMetaFromSheets() {
+  if (!SHEETS_WEBHOOK) { initMeta(0, 2000); return; }
   try {
-    const res = await fetch(SHEETS_WEBHOOK + '?action=getMeta&_=' + Date.now());
+    const res  = await fetch(SHEETS_WEBHOOK + '?action=getMeta&_=' + Date.now());
     const data = await res.json();
-
-    console.log('META API:', data); // 👈 DEBUG
-
-    const total = data.total || 0;
-    const meta = data.meta || 2000;
-
-    initMeta(total, meta);
-
-  } catch (e) {
-    console.error('Erro ao buscar meta:', e);
-    initMeta(0, 2000);
+    initMeta(Number(data.total) || 0, Number(data.meta) || 2000);
+  } catch (err) {
+    console.warn('fetchMeta erro:', err);
+    initMeta(0, META_ATUAL || 2000);
   }
 }
 
 function initMeta(arrecadado, total) {
-  META_ATUAL = total; // 👈 salva dinamicamente
-
-  const pct = Math.min(100, Math.round((arrecadado / total) * 100));
+  META_ATUAL = total;
+  const pct  = Math.min(100, Math.round((arrecadado / total) * 100));
 
   document.getElementById('metaArrecadado').textContent =
-    'R$ ' + arrecadado.toLocaleString('pt-BR');
-
+    'R$ ' + arrecadado.toLocaleString('pt-BR', {minimumFractionDigits:2});
   document.getElementById('metaTotal').textContent =
-    'R$ ' + total.toLocaleString('pt-BR');
-
+    'R$ ' + total.toLocaleString('pt-BR', {minimumFractionDigits:2});
   document.getElementById('metaBarPct').textContent = pct + '%';
 
   const bar = document.getElementById('metaBarFill');
 
+  if (metaJaAnimou) {
+    bar.style.width = pct + '%';
+    return;
+  }
+
   const obs = new IntersectionObserver((entries) => {
     if (entries[0].isIntersecting) {
-      setTimeout(() => {
-        bar.style.width = pct + '%';
-      }, 200);
+      setTimeout(() => { bar.style.width = pct + '%'; }, 200);
+      metaJaAnimou = true;
       obs.disconnect();
     }
-  }, { threshold: .3 });
-
+  }, { threshold: 0.3 });
   obs.observe(bar);
 }
 
-function incrementMeta(valor) {
-  const barFill = document.getElementById('metaBarFill');
+function incrementMetaVisual(valor) {
+  const bar     = document.getElementById('metaBarFill');
+  const current = parseFloat(bar.style.width) || 0;
+  const add     = Math.min(100 - current, (valor / META_ATUAL) * 100);
+  bar.style.width = (current + add) + '%';
+  document.getElementById('metaBarPct').textContent = Math.round(current + add) + '%';
 
-  const current = parseFloat(barFill.style.width) || 0;
-  const add = Math.min(100 - current, (valor / META_ATUAL) * 100);
-
-  barFill.style.width = (current + add) + '%';
-  document.getElementById('metaBarPct').textContent =
-    Math.round(current + add) + '%';
-
-  const atualEl = document.getElementById('metaArrecadado');
-  const atualNum = parseInt(atualEl.textContent.replace(/\D/g,'')) || 0;
-
-  atualEl.textContent =
-    'R$ ' + (atualNum + valor).toLocaleString('pt-BR');
+  const el  = document.getElementById('metaArrecadado');
+  const num = parseFloat(el.textContent.replace(/[^\d,]/g, '').replace(',', '.')) || 0;
+  el.textContent = 'R$ ' + (num + valor).toLocaleString('pt-BR', {minimumFractionDigits:2});
 }
 
 // ════════════════════════════════════════════════
-// SELEÇÃO DE VALOR — grade da página principal
+// PIX DINÂMICO — payload EMV + QR Code
+// ════════════════════════════════════════════════
+function gerarPayloadPix(valor) {
+  const chave  = '18303296000185';
+  const nome   = 'FUNDACAO LEOPOLDINA';
+  const cidade = 'RIO DE JANEIRO';
+
+  function tlv(id, v) {
+    return id + String(v.length).padStart(2, '0') + v;
+  }
+
+  let payload = '000201'
+    + tlv('26', tlv('00', 'BR.GOV.BCB.PIX') + tlv('01', chave))
+    + '52040000'
+    + '5303986'
+    + (valor > 0 ? tlv('54', parseFloat(valor).toFixed(2)) : '')
+    + '5802BR'
+    + tlv('59', nome)
+    + tlv('60', cidade)
+    + tlv('62', tlv('05', 'SMT' + Date.now().toString().slice(-6)))
+    + '6304';
+
+  payload += crc16(payload);
+  return payload;
+}
+
+function crc16(str) {
+  let crc = 0xFFFF;
+  for (let i = 0; i < str.length; i++) {
+    crc ^= str.charCodeAt(i) << 8;
+    for (let j = 0; j < 8; j++) {
+      crc = (crc & 0x8000) ? ((crc << 1) ^ 0x1021) : (crc << 1);
+    }
+  }
+  return (crc & 0xFFFF).toString(16).toUpperCase().padStart(4, '0');
+}
+
+function gerarQRCode(valor) {
+  const container = document.getElementById('qrCodeContainer');
+  if (!container) return;
+  container.innerHTML = '';
+
+  if (typeof QRCode === 'undefined') {
+    container.innerHTML = '<p style="font-size:12px;color:#999;padding:12px;text-align:center;">QR Code indisponível</p>';
+    return;
+  }
+
+  const payload = gerarPayloadPix(valor || 0);
+  new QRCode(container, {
+    text:         payload,
+    width:        168,
+    height:       168,
+    colorDark:    '#1B5E20',
+    colorLight:   '#FFFFFF',
+    correctLevel: QRCode.CorrectLevel.M
+  });
+}
+
+function copyPix() {
+  const val     = selectedValue || 0;
+  const payload = gerarPayloadPix(val);
+  const btn     = document.getElementById('copyBtn');
+
+  const doToast = () => {
+    btn.textContent = '✓ Copiado!';
+    btn.classList.add('copied');
+    showToast('✓ PIX copiado! Cole no seu banco.');
+    setTimeout(() => { btn.textContent = 'Copiar chave'; btn.classList.remove('copied'); }, 3000);
+  };
+
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(payload).then(doToast).catch(() => fallbackCopy(payload, doToast));
+  } else {
+    fallbackCopy(payload, doToast);
+  }
+}
+
+function fallbackCopy(text, cb) {
+  const el = document.createElement('textarea');
+  el.value = text;
+  el.style.cssText = 'position:fixed;opacity:0';
+  document.body.appendChild(el);
+  el.select();
+  document.execCommand('copy');
+  document.body.removeChild(el);
+  cb();
+}
+
+// ════════════════════════════════════════════════
+// SELEÇÃO DE VALOR — página
 // ════════════════════════════════════════════════
 function selectAmount(btn) {
   document.querySelectorAll('#amountGrid .amount-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  const val = btn.dataset.value;
+  selectedValue = parseFloat(btn.dataset.value);
   selectedLabel = btn.dataset.label;
-  if (val !== 'outro') {
-    selectedValue = parseInt(val);
-    syncModalDisplay(val, selectedLabel);
-  }
 }
 
 // ════════════════════════════════════════════════
-// SELEÇÃO DE VALOR — grade dentro do modal
+// SELEÇÃO DE VALOR — modal
 // ════════════════════════════════════════════════
 function selectModalAmount(btn) {
   document.querySelectorAll('#modalAmountGrid .amount-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  selectedValue = parseInt(btn.dataset.value);
+  selectedValue = parseFloat(btn.dataset.value);
   selectedLabel = btn.dataset.label;
-  // Limpa campo manual
   document.getElementById('manualAmountInput').value = '';
-  syncModalDisplay(btn.dataset.value, selectedLabel);
+  document.getElementById('manualAmountError').style.display = 'none';
+  syncDisplay(btn.dataset.value, selectedLabel);
 }
 
-// Campo manual sempre visível — substitui a seleção dos botões
 function updateManualAmount(v) {
   const errEl = document.getElementById('manualAmountError');
-  const val = parseInt(v);
-  if (v && val < 1) {
+  const val   = parseFloat(v.replace(',', '.'));
+
+  if (v !== '' && (isNaN(val) || val < 0.01)) {
     errEl.style.display = 'block';
     return;
   }
   errEl.style.display = 'none';
-  if (v && val >= 1) {
+
+  if (v !== '' && val >= 0.01) {
     selectedValue = val;
-    selectedLabel = 'Valor livre';
+    selectedLabel = 'Valor personalizado';
     document.querySelectorAll('#modalAmountGrid .amount-btn').forEach(b => b.classList.remove('active'));
-    syncModalDisplay(v, 'Valor personalizado');
-  } else if (!v) {
+    syncDisplay(val.toFixed(2).replace('.', ','), selectedLabel);
+  } else {
     const active = document.querySelector('#modalAmountGrid .amount-btn.active');
     if (active) {
-      selectedValue = parseInt(active.dataset.value);
+      selectedValue = parseFloat(active.dataset.value);
       selectedLabel = active.dataset.label;
-      syncModalDisplay(active.dataset.value, selectedLabel);
+      syncDisplay(active.dataset.value, selectedLabel);
     }
   }
 }
 
 function validateMinAmount(input) {
-  const errEl = document.getElementById('manualAmountError');
-  if (input.value && parseInt(input.value) < 1) {
+  const val = parseFloat(input.value.replace(',', '.'));
+  if (input.value !== '' && (isNaN(val) || val < 0.01)) {
     input.value = '';
-    errEl.style.display = 'none';
+    document.getElementById('manualAmountError').style.display = 'none';
     const active = document.querySelector('#modalAmountGrid .amount-btn.active');
-    if (active) syncModalDisplay(active.dataset.value, active.dataset.label);
+    if (active) syncDisplay(active.dataset.value, active.dataset.label);
   }
 }
 
-function syncModalDisplay(val, label) {
-  document.getElementById('selAmountDisplay').textContent = 'R$ ' + val;
-  document.getElementById('selLabelDisplay').textContent = label + ' — obrigado! 💚';
+function syncDisplay(val, label) {
+  const num = parseFloat(String(val).replace(',', '.'));
+  const fmt = isNaN(num) ? ('R$ ' + val) : 'R$ ' + num.toLocaleString('pt-BR', {minimumFractionDigits:2});
+  document.getElementById('selAmountDisplay').textContent = fmt;
+  document.getElementById('selLabelDisplay').textContent  = label + ' — obrigado! 💚';
+  gerarQRCode(isNaN(num) ? 0 : num);
 }
 
-function updateCustomAmount(v) {
-  updateManualAmount(v);
-}
+function updateCustomAmount(v) { updateManualAmount(v); }
+function syncModalDisplay(val, label) { syncDisplay(val, label); }
 
 // ════════════════════════════════════════════════
 // MODAL
@@ -1352,15 +1537,19 @@ function updateCustomAmount(v) {
 function openModal() {
   document.getElementById('modalOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
-  // Sincroniza grade do modal com seleção da página
+
   const pagActive = document.querySelector('#amountGrid .amount-btn.active');
-  if (pagActive && pagActive.dataset.value !== 'outro') {
+  if (pagActive) {
     document.querySelectorAll('#modalAmountGrid .amount-btn').forEach(b => {
       b.classList.toggle('active', b.dataset.value === pagActive.dataset.value);
     });
-    syncModalDisplay(pagActive.dataset.value, pagActive.dataset.label);
+    selectedValue = parseFloat(pagActive.dataset.value);
+    selectedLabel = pagActive.dataset.label;
   }
+
   document.getElementById('manualAmountInput').value = '';
+  document.getElementById('manualAmountError').style.display = 'none';
+  syncDisplay(selectedValue, selectedLabel);
 }
 
 function closeModal() {
@@ -1369,47 +1558,16 @@ function closeModal() {
   setTimeout(() => {
     document.getElementById('modalContent').style.display = 'block';
     document.getElementById('successState').classList.remove('active');
-    document.getElementById('modalTitle').textContent = 'Fazer doação';
-    document.getElementById('submitBtn').disabled = false;
-    document.getElementById('submitBtn').textContent = 'Já fiz o PIX — Confirmar doação';
+    document.getElementById('modalTitle').textContent    = 'Fazer doação';
+    document.getElementById('submitBtn').disabled        = false;
+    document.getElementById('submitBtn').textContent     = 'Já fiz o PIX — Confirmar doação';
+    document.getElementById('donorName').value           = '';
+    document.getElementById('donorContact').value        = '';
   }, 420);
 }
 
-function handleOverlayClick(e) {
-  if (e.target === document.getElementById('modalOverlay')) closeModal();
-}
-
-// ════════════════════════════════════════════════
-// PIX — COPIAR CHAVE
-// ════════════════════════════════════════════════
-function copyPix() {
-  const key = document.getElementById('pixKey').textContent.trim();
-  const btn = document.getElementById('copyBtn');
-
-  const doToast = () => {
-    btn.textContent = '✓ Copiada!';
-    btn.classList.add('copied');
-    showToast('✓ Chave PIX copiada!');
-    setTimeout(() => { btn.textContent = 'Copiar'; btn.classList.remove('copied'); }, 3000);
-  };
-
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText(key).then(doToast).catch(() => fallbackCopy(key, doToast));
-  } else {
-    fallbackCopy(key, doToast);
-  }
-}
-
-function fallbackCopy(text, cb) {
-  const el = document.createElement('textarea');
-  el.value = text;
-  el.style.position = 'fixed';
-  el.style.opacity = '0';
-  document.body.appendChild(el);
-  el.select();
-  document.execCommand('copy');
-  document.body.removeChild(el);
-  cb();
+function handleOverlayClick(ev) {
+  if (ev.target === document.getElementById('modalOverlay')) closeModal();
 }
 
 // ════════════════════════════════════════════════
@@ -1419,220 +1577,141 @@ function showToast(msg) {
   const t = document.getElementById('toast');
   t.textContent = msg;
   t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2800);
+  setTimeout(() => t.classList.remove('show'), 3000);
 }
 
 // ════════════════════════════════════════════════
-// ENVIO PARA GOOGLE SHEETS
+// SUBMIT — envia via GET (sem CORS) para o Sheets
 // ════════════════════════════════════════════════
 async function submitForm() {
-  const name = document.getElementById('donorName').value.trim();
+  const name    = document.getElementById('donorName').value.trim();
   const contact = document.getElementById('donorContact').value.trim();
-  const btn = document.getElementById('submitBtn');
+  const btn     = document.getElementById('submitBtn');
 
-  btn.disabled = true;
+  btn.disabled    = true;
   btn.textContent = 'Enviando...';
 
-  const payload = {
-    timestamp: new Date().toISOString(), // 👈 AQUI
-    timestamp_br: new Date().toLocaleString('pt-BR'),
-    nome: name || '(não informado)',
-    contato: contact || '(não informado)',
-    valor: selectedValue ? 'R$ ' + selectedValue : 'Valor livre',
-    valorNumerico: selectedValue || 0,
-    categoria: selectedLabel
-};
-
-  // Envio para Google Sheets via Apps Script
   if (SHEETS_WEBHOOK) {
     try {
-      await fetch(SHEETS_WEBHOOK, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+      const params = new URLSearchParams({
+        action:        'salvarDoacao',
+        nome:          name    || '(não informado)',
+        contato:       contact || '(não informado)',
+        valor:         'R$ ' + (selectedValue || 0).toFixed(2),
+        valorNumerico: selectedValue || 0,
+        categoria:     selectedLabel,
+        timestamp: new Date().toISOString()
       });
-      setTimeout(() => {
-        fetchMetaFromSheets();
-      },    1000);
-    } catch (e) {
-      console.warn('Webhook error:', e);
+      const url = SHEETS_WEBHOOK + '?' + params.toString();
+      console.log('ENVIANDO:', url);
+
+      const res = await fetch(url);
+      const data = await res.json();
+
+      console.log('RESPOSTA:', data);
+
+      if (!data.ok) {
+        throw new Error('Erro ao salvar');
+      }
+
+    } catch (err) {
+      console.error('ERRO REAL:', err);
     }
-  } else {
-    console.log('Doação registrada (configure SHEETS_WEBHOOK):', payload);
   }
 
-  // Incrementa meta visual
+  if (selectedValue) incrementMetaVisual(selectedValue);
   await fetchMetaFromSheets();
 
-  // Exibe sucesso
   document.getElementById('modalContent').style.display = 'none';
   document.getElementById('successState').classList.add('active');
   document.getElementById('modalTitle').textContent = 'Doação confirmada! 🌱';
 }
 
 // ════════════════════════════════════════════════
-// FAQ ACCORDION
+// SOM DO VÍDEO
+// ════════════════════════════════════════════════
+function toggleSound() {
+  const video    = document.getElementById('projetoVideo');
+  const btn      = document.getElementById('soundBtn');
+  const iconMute = document.getElementById('iconMuted');
+  const iconSnd  = document.getElementById('iconSound');
+  const wave     = document.getElementById('soundWave');
+  const label    = document.getElementById('soundLabel');
+  if (!video) return;
+
+  video.muted = !video.muted;
+
+  if (video.muted) {
+    iconMute.style.display = '';   iconSnd.style.display = 'none';
+    wave.style.display = 'none';   label.textContent = 'Ligar som';
+    btn.classList.remove('on');
+  } else {
+    video.play();
+    iconMute.style.display = 'none'; iconSnd.style.display = '';
+    wave.style.display = 'flex';     label.textContent = 'Desligar som';
+    btn.classList.add('on');
+    btn.classList.remove('pulse-hint');
+  }
+}
+
+// ════════════════════════════════════════════════
+// FAQ
 // ════════════════════════════════════════════════
 function toggleFaq(btn) {
-  const item = btn.closest('.faq-item');
+  const item   = btn.closest('.faq-item');
   const isOpen = item.classList.contains('open');
   document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
   if (!isOpen) item.classList.add('open');
 }
 
 // ════════════════════════════════════════════════
-// SCROLL — PROGRESS + FLOATING BTN
+// SCROLL — progresso + botão flutuante
 // ════════════════════════════════════════════════
-const floatBtn = document.getElementById('floatBtn');
+const floatBtn    = document.getElementById('floatBtn');
 const progressBar = document.getElementById('progressBar');
-const heroEl = document.querySelector('.hero');
+const heroEl      = document.querySelector('.hero');
 
 function onScroll() {
-  const sy = window.scrollY;
+  const sy   = window.scrollY;
   const docH = document.documentElement.scrollHeight - window.innerHeight;
   progressBar.style.width = Math.min(100, (sy / docH) * 100) + '%';
-  if (sy > heroEl.offsetHeight * 0.55) {
-    floatBtn.classList.remove('hidden');
-  } else {
-    floatBtn.classList.add('hidden');
-  }
+  floatBtn.classList.toggle('hidden', sy <= heroEl.offsetHeight * 0.55);
 }
 window.addEventListener('scroll', onScroll, { passive: true });
 
 // ════════════════════════════════════════════════
-// INTERSECTION OBSERVER — ANIMAÇÕES
+// ANIMAÇÕES DE ENTRADA
 // ════════════════════════════════════════════════
-const io = new IntersectionObserver((entries) => {
-  entries.forEach((e, i) => {
-    if (e.isIntersecting) {
-      setTimeout(() => e.target.classList.add('visible'), i * 90);
-      io.unobserve(e.target);
+const ioAnim = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 90);
+      ioAnim.unobserve(entry.target);
     }
   });
-}, { threshold: .12 });
-
-document.querySelectorAll('.fade-in, .how-item').forEach(el => io.observe(el));
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-in, .how-item').forEach(el => ioAnim.observe(el));
 
 // ════════════════════════════════════════════════
-// SWIPE PARA FECHAR MODAL
+// SWIPE para fechar modal
 // ════════════════════════════════════════════════
 let touchY0 = 0;
 const modalEl = document.getElementById('modal');
-modalEl.addEventListener('touchstart', e => { touchY0 = e.touches[0].clientY; }, { passive: true });
-modalEl.addEventListener('touchend', e => {
-  if (e.changedTouches[0].clientY - touchY0 > 90 && modalEl.scrollTop === 0) closeModal();
+modalEl.addEventListener('touchstart', ev => { touchY0 = ev.touches[0].clientY; }, { passive: true });
+modalEl.addEventListener('touchend',   ev => {
+  if (ev.changedTouches[0].clientY - touchY0 > 90 && modalEl.scrollTop === 0) closeModal();
 }, { passive: true });
 
-// Previne zoom em inputs no iOS
+// Previne zoom em inputs (iOS)
 document.querySelectorAll('input').forEach(inp => {
   inp.addEventListener('focus', () => { inp.style.fontSize = '16px'; });
-  inp.addEventListener('blur', () => { inp.style.fontSize = ''; });
+  inp.addEventListener('blur',  () => { inp.style.fontSize = '';      });
 });
 
-function gerarPayloadPix(valor) {
-  const chave = "18303296000185"; // CNPJ sem máscara
-  const nome = "FUNDACAO LEOPOLDINA";
-  const cidade = "RIO";
-
-  function format(id, value) {
-    return id + value.length.toString().padStart(2, '0') + value;
-  }
-
-  let payload = "";
-
-  payload += "000201";
-  payload += format("26",
-    format("00", "BR.GOV.BCB.PIX") +
-    format("01", chave)
-  );
-  payload += "52040000";
-  payload += "5303986";
-
-  if (valor) {
-    payload += format("54", valor.toFixed(2));
-  }
-
-  payload += "5802BR";
-  payload += format("59", nome);
-  payload += format("60", cidade);
-  payload += format("62", format("05", "SEMENTE"));
-
-  payload += "6304";
-
-  payload += crc16(payload);
-
-  return payload;
-}
-
-function crc16(payload) {
-  let polinomio = 0x1021;
-  let resultado = 0xFFFF;
-
-  for (let i = 0; i < payload.length; i++) {
-    resultado ^= payload.charCodeAt(i) << 8;
-
-    for (let j = 0; j < 8; j++) {
-      if ((resultado <<= 1) & 0x10000) {
-        resultado ^= polinomio;
-      }
-      resultado &= 0xFFFF;
-    }
-  }
-
-  return resultado.toString(16).toUpperCase().padStart(4, '0');
-}
-
-function atualizarQRCode() {
-  const payload = gerarPayloadPix(selectedValue);
-
-  QRCode.toDataURL(payload, function (err, url) {
-    if (!err) {
-      document.getElementById("qrCodePix").src = url;
-    }
-  });
-}
-
-function syncModalDisplay(val, label) {
-  document.getElementById('selAmountDisplay').textContent = 'R$ ' + val;
-  document.getElementById('selLabelDisplay').textContent = label + ' — obrigado! 💚';
-
-  atualizarQRCode(); // 👈 AQUI
-}
-
-function openModal() {
-  document.getElementById('modalOverlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-
-  atualizarQRCode(); // 👈 GERA AO ABRIR
-}
-function toggleSound() {
-  const video = document.getElementById('mainVideo');
-  const btn = document.getElementById('soundBtn');
-
-  video.muted = !video.muted;
-
-  if (video.muted) {
-    btn.textContent = '🔇';
-  } else {
-    btn.textContent = '🔊';
-
-    // 🔥 importante: garante play após interação
-    video.play();
-  }
-}
-
-function restartVideo() {
-  const video = document.getElementById('mainVideo');
-
-  video.currentTime = 0;
-  video.play();
-}
 // ════════════════════════════════════════════════
 // INIT
 // ════════════════════════════════════════════════
 fetchMetaFromSheets();
-
-  
 </script>
 </body>
 </html>
