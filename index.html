@@ -1627,16 +1627,6 @@ function restartVideo() {
   video.currentTime = 0;
   video.play();
 }
-
-const hint = document.querySelector('.sound-hint');
-
-btn.addEventListener('click', () => {
-  video.muted = false;
-  video.currentTime = 0;
-  video.play();
-
-  if (hint) hint.style.display = 'none';
-});
 // ════════════════════════════════════════════════
 // INIT
 // ════════════════════════════════════════════════
@@ -1644,6 +1634,5 @@ fetchMetaFromSheets();
 
   
 </script>
-<script src="script.js" defer></script>
 </body>
 </html>
