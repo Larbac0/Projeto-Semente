@@ -1316,21 +1316,21 @@ const SHEETS_WEBHOOK = 'https://script.google.com/macros/s/AKfycbwuomulhjl-n0JaL
 // ════════════════════════════════════════════════
 let selectedValue  = 20;
 let selectedLabel  = 'Um abraço';
-let META_ATUAL     = 2000;
+let META_ATUAL     = 70000;
 let metaJaAnimou   = false;
 
 // ════════════════════════════════════════════════
 // META — busca meta e total do Sheets
 // ════════════════════════════════════════════════
 async function fetchMetaFromSheets() {
-  if (!SHEETS_WEBHOOK) { initMeta(0, 2000); return; }
+  if (!SHEETS_WEBHOOK) { initMeta(0, 70000); return; }
   try {
     const res  = await fetch(SHEETS_WEBHOOK + '?action=getMeta&_=' + Date.now());
     const data = await res.json();
-    initMeta(Number(data.total) || 0, Number(data.meta) || 2000);
+    initMeta(Number(data.total) || 0, Number(data.meta) || 70000);
   } catch (err) {
     console.warn('fetchMeta erro:', err);
-    initMeta(0, META_ATUAL || 2000);
+    initMeta(0, META_ATUAL || 70000);
   }
 }
 
@@ -1646,6 +1646,7 @@ function toggleSound() {
     wave.style.display = 'none';   label.textContent = 'Ligar som';
     btn.classList.remove('on');
   } else {
+    video.currentTime = 0;
     video.play();
     iconMute.style.display = 'none'; iconSnd.style.display = '';
     wave.style.display = 'flex';     label.textContent = 'Desligar som';
